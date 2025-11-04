@@ -7,7 +7,7 @@ import {
   ComboboxOptions,
   ComboboxOption,
 } from "@headlessui/react";
-import { Check, ChevronsUpDown, X } from "lucide-react";
+import { Check, ChevronDown, X } from "lucide-react";
 
 interface Option {
   value: string;
@@ -50,7 +50,6 @@ export const Select = ({
   };
 
   const handleInputClick = () => {
-    // Simula un click en el botón para abrir/cerrar el dropdown
     buttonRef.current?.click();
   };
 
@@ -61,7 +60,7 @@ export const Select = ({
           <div className="relative">
             <div className="relative">
               <ComboboxInput
-                className="w-full rounded-md border border-gray-300 py-2 pl-3 pr-20 text-base focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
+                className="w-full rounded-md border border-gray-300 py-2 pl-3 pr-20 text-base focus:border-blue-500 focus:outline-none  focus:ring-blue-500 cursor-pointer"
                 displayValue={() => selected?.label || ""}
                 onChange={(event) => setQuery(event.target.value)}
                 onClick={handleInputClick}
@@ -84,7 +83,7 @@ export const Select = ({
                   ref={buttonRef}
                   className="flex items-center px-2 touch-manipulation pointer-events-auto"
                 >
-                  <ChevronsUpDown className="h-5 w-5 text-gray-400" />
+                  <ChevronDown className="h-5 w-5 text-gray-400" />
                 </ComboboxButton>
               </div>
             </div>

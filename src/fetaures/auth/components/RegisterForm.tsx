@@ -1,9 +1,10 @@
 import { Controller, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema, type RegisterInput } from "../schemas";
-import { Select } from "@/shared/components/ui/Select";
+
 import { DOCUMENT_TYPES } from "@/shared/constants";
 import { DatePicker } from "@/shared/components/ui/DatePicker";
+import { Select } from "@/shared/components/ui/Select";
 
 export default function RegisterForm() {
   const {
@@ -20,7 +21,7 @@ export default function RegisterForm() {
     console.log(data);
   };
 
-  console.log(watch("birthdate"));
+  console.log(watch("documentType"));
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
