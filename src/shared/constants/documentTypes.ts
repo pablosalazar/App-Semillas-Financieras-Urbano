@@ -1,8 +1,8 @@
-export const DOCUMENT_TYPES_VALUES = ["CC", "TI", "CE", "PP"] as const;
-
 export const DOCUMENT_TYPES = [
-  { value: "CC" as const, label: "Cédula de Ciudadanía (C.C)" },
-  { value: "TI" as const, label: "Tarjeta de Identidad (T.I)" },
-  { value: "CE" as const, label: "Cédula de Extranjería (C.E)" },
+  { value: "CC" as const, label: "Cédula de Ciudadanía" },
+  { value: "TI" as const, label: "Tarjeta de Identidad" },
+  { value: "CE" as const, label: "Cédula de Extranjería" },
   { value: "PP" as const, label: "Pasaporte" },
 ];
+
+export const DOCUMENT_TYPES_VALUES = DOCUMENT_TYPES.map((doc) => doc.value);

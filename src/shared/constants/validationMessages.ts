@@ -9,4 +9,5 @@ export const validationMessages = {
   passwordTooShort: "La contraseña debe tener al menos 8 caracteres",
   passwordsMustMatch: "Las contraseñas no coinciden",
   invalidDocumentNumber: "Número de documento inválido",
+  invalidDate: "Fecha inválida",
 } as const;

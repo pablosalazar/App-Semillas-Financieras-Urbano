@@ -24,10 +24,8 @@ export const registerSchema = z.object({
     .max(20, validationMessages.maxLength(20))
     .regex(/^[0-9]+$/, validationMessages.numbersOnly),
 
-  email: z
-    .string()
-    .min(1, validationMessages.required)
-    .email(validationMessages.invalidEmail),
+  email: z.email(validationMessages.invalidEmail),
+  birthdate: z.date(validationMessages.invalidDate),
 });
 
 export type RegisterInput = z.infer<typeof registerSchema>;
