@@ -26,7 +26,8 @@ export const registerSchema = z.object({
 
   email: z.email(validationMessages.invalidEmail),
   birthdate: z.date(validationMessages.invalidDate),
-  department: z.string(validationMessages.required),
+  department: z.string(validationMessages.selectOption),
+  municipality: z.string(validationMessages.selectOption),
 });
 
 export type RegisterInput = z.infer<typeof registerSchema>;

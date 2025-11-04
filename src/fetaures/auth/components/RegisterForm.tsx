@@ -4,17 +4,37 @@ import { registerSchema, type RegisterInput } from "../schemas";
 
 import { DOCUMENT_TYPES } from "@/shared/constants";
 import { DateInput, SelectInput, TextInput } from "@/shared/components/ui";
-import { DEPARTMENTS } from "@/shared/utils/location";
+import { DEPARTMENTS, getMunicipalitiesByDepartment } from "@/shared/utils/location";
+import { useEffect, useMemo } from "react";
 
 export default function RegisterForm() {
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<RegisterInput>({
     resolver: zodResolver(registerSchema),
   });
+
+  // Watch only the department field for performance
+  const selectedDepartment = watch("department");
+
+  // Memoize municipalities - only recalculates when department changes
+  const municipalities = useMemo(() => {
+    if (!selectedDepartment) {
+      return [];
+    }
+    return getMunicipalitiesByDepartment(selectedDepartment);
+  }, [selectedDepartment]);
+
+  // Reset municipality when department changes
+  useEffect(() => {
+    if (selectedDepartment) {
+      setValue("municipality", "");
+    }
+  }, [selectedDepartment, setValue]);
 
   const onSubmit: SubmitHandler<RegisterInput> = (data) => {
     console.log(data);
@@ -86,6 +106,20 @@ export default function RegisterForm() {
           {...register("department")}
           placeholder="Selecciona un departamento"
           error={errors.department?.message}
+          clearable
+        />
+
+        <SelectInput
+          label="Municipio"
+          options={municipalities}
+          {...register("municipality")}
+          placeholder={
+            selectedDepartment
+              ? "Selecciona un municipio"
+              : "Primero selecciona un departamento"
+          }
+          error={errors.municipality?.message}
+          disabled={!selectedDepartment || municipalities.length === 0}
           clearable
         />
 
