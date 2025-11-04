@@ -18,10 +18,8 @@ export default function RegisterForm() {
     resolver: zodResolver(registerSchema),
   });
 
-  // Watch only the department field for performance
   const selectedDepartment = watch("department");
 
-  // Memoize municipalities - only recalculates when department changes
   const municipalities = useMemo(() => {
     if (!selectedDepartment) {
       return [];
@@ -29,7 +27,6 @@ export default function RegisterForm() {
     return getMunicipalitiesByDepartment(selectedDepartment);
   }, [selectedDepartment]);
 
-  // Reset municipality when department changes
   useEffect(() => {
     if (selectedDepartment) {
       setValue("municipality", "");
@@ -40,7 +37,7 @@ export default function RegisterForm() {
     console.log(data);
   };
 
-  console.log(watch("documentType"));
+  console.log(watch("birthdate"));
 
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)}>
