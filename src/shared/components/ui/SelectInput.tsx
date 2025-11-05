@@ -199,7 +199,7 @@ export const SelectInput = forwardRef<HTMLInputElement, SelectInputProps>(
                       className="form-clear-button"
                       aria-label="Limpiar selección"
                     >
-                      <X className="h-5 w-5 text-gray-400" />
+                      <X className="text-gray-400" />
                     </button>
                   )}
 
@@ -207,7 +207,7 @@ export const SelectInput = forwardRef<HTMLInputElement, SelectInputProps>(
                     ref={buttonRef}
                     className="flex items-center px-2 touch-manipulation pointer-events-auto"
                   >
-                    <ChevronDown className="h-5 w-5 text-gray-400" />
+                    <ChevronDown className="text-gray-400" />
                   </ComboboxButton>
                 </div>
               </div>

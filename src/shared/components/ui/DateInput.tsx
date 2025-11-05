@@ -106,6 +106,12 @@ export function DateInput({
                 locale={es}
                 startMonth={minDate}
                 endMonth={maxDate}
+                hidden={
+                  [
+                    ...(minDate ? [{ before: minDate }] : []),
+                    ...(maxDate ? [{ after: maxDate }] : []),
+                  ]
+                }
               />
             </div>
           )}
