@@ -1,4 +1,4 @@
-import { useForm, type SubmitHandler } from "react-hook-form";
+import { Controller, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema, type RegisterInput } from "../schemas";
 
@@ -11,6 +11,7 @@ export default function RegisterForm() {
   const {
     register,
     handleSubmit,
+    control,
     watch,
     setValue,
     formState: { errors, isSubmitting },
@@ -19,6 +20,7 @@ export default function RegisterForm() {
   });
 
   const selectedDepartment = watch("department");
+
 
   const municipalities = useMemo(() => {
     if (!selectedDepartment) {
@@ -36,8 +38,6 @@ export default function RegisterForm() {
   const onSubmit: SubmitHandler<RegisterInput> = (data) => {
     console.log(data);
   };
-
-  console.log(watch("birthdate"));
 
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)}>
@@ -77,24 +77,31 @@ export default function RegisterForm() {
           error={errors.email?.message}
         />
 
-        <DateInput
-          label="Fecha de Nacimiento"
-          {...register("birthdate", {
-            setValueAs: (v) => (v ? new Date(v) : null),
-          })}
-          error={errors.birthdate?.message}
-          placeholder="DD/MM/AAAA"
-          clearable
-          disabled={isSubmitting}
-          minDate={
-            new Date(
-              new Date().getFullYear() - 100,
-              new Date().getMonth(),
-              new Date().getDate()
-            )
-          }
-          maxDate={new Date()}
-          required={true}
+        <Controller
+          control={control}
+          name="birthdate"
+          render={({ field, fieldState }) => (
+            <div>
+              <DateInput
+                label="Fecha de nacimiento"
+                value={field.value}
+                onChange={field.onChange}
+                placeholder="DD/MM/AAAA"
+                error={fieldState.error?.message}
+                clearable
+                disabled={isSubmitting}
+                minDate={
+                  new Date(
+                    new Date().getFullYear() - 100,
+                    new Date().getMonth(),
+                    new Date().getDate()
+                  )
+                }
+                maxDate={new Date()}
+                required
+              />
+            </div>
+          )}
         />
 
         <SelectInput
