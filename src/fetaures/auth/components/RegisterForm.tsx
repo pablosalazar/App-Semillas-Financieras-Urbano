@@ -2,7 +2,7 @@ import { Controller, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema, type RegisterInput } from "../schemas";
 
-import { DOCUMENT_TYPES } from "@/shared/constants";
+import { DOCUMENT_TYPES, GENDER_TYPES } from "@/shared/constants";
 import { DateInput, SelectInput, TextInput } from "@/shared/components/ui";
 import { DEPARTMENTS, getMunicipalitiesByDepartment } from "@/shared/utils/location";
 import { useEffect, useMemo } from "react";
@@ -43,16 +43,17 @@ export default function RegisterForm() {
     <form noValidate onSubmit={handleSubmit(onSubmit)}>
       <div className="grid grid-cols-2 gap-4 mb-4">
         <TextInput
-          label="First Name"
+          label="Nombre(s)"
           {...register("firstname")}
           error={errors.firstname?.message}
           required
         />
 
         <TextInput
-          label="Last Name"
+          label="Apellido(s)"
           {...register("lastname")}
           error={errors.lastname?.message}
+          required
         />
 
         <SelectInput
@@ -62,19 +63,24 @@ export default function RegisterForm() {
           placeholder="Selecciona un tipo de documento"
           error={errors.documentType?.message}
           clearable
+          required
         />
 
         <TextInput
-          label="Document Number"
+          label="Número de documento"
           {...register("documentNumber")}
           error={errors.documentNumber?.message}
+          required
         />
 
-        <TextInput
-          label="Email"
-          type="email"
-          {...register("email")}
-          error={errors.email?.message}
+        <SelectInput
+          label="Género"
+          options={GENDER_TYPES}
+          {...register("gender")}
+          placeholder="Selecciona un género"
+          error={errors.gender?.message}
+          clearable
+          required
         />
 
         <Controller
@@ -111,6 +117,7 @@ export default function RegisterForm() {
           placeholder="Selecciona un departamento"
           error={errors.department?.message}
           clearable
+          required
         />
 
         <SelectInput
@@ -125,8 +132,22 @@ export default function RegisterForm() {
           error={errors.municipality?.message}
           disabled={!selectedDepartment || municipalities.length === 0}
           clearable
+          required
         />
 
+        <TextInput
+          label="Teléfono"
+          {...register("phone")}
+          error={errors.phone?.message}
+          placeholder="Teléfono"
+        />
+
+        <TextInput
+          label="Correo electrónico"
+          type="email"
+          {...register("email")}
+          error={errors.email?.message}
+        />
       </div>
 
 

@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { validationMessages } from "@/shared/constants/validationMessages";
-import { DOCUMENT_TYPES_VALUES } from "@/shared/constants";
+import { DOCUMENT_TYPES_VALUES, GENDER_TYPES_VALUES } from "@/shared/constants";
 
 export const registerSchema = z.object({
   firstname: z
@@ -23,11 +23,27 @@ export const registerSchema = z.object({
     .min(5, validationMessages.minLength(5))
     .max(20, validationMessages.maxLength(20))
     .regex(/^[0-9]+$/, validationMessages.numbersOnly),
-
-  email: z.email(validationMessages.invalidEmail),
+  gender: z.enum(GENDER_TYPES_VALUES, validationMessages.selectOption),
   birthdate: z.date(validationMessages.invalidDate),
-  department: z.string(validationMessages.selectOption),
-  municipality: z.string(validationMessages.selectOption),
+  department: z.string()
+    .min(1, validationMessages.selectOption),
+  municipality: z.string()
+    .min(1, validationMessages.selectOption),
+  phone: z
+    .string()
+    .optional()
+    .refine(
+      (value) => !value || /^[0-9]+$/.test(value),
+      validationMessages.numbersOnly
+    ),
+  email: z
+    .string()
+    .optional()
+    .refine(
+      (value) => !value || z.string().email().safeParse(value).success,
+      validationMessages.invalidEmail
+    ),
+
 });
 
 export type RegisterInput = z.infer<typeof registerSchema>;

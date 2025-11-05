@@ -154,10 +154,10 @@ export const SelectInput = forwardRef<HTMLInputElement, SelectInputProps>(
         {label && (
           <label
             htmlFor={selectId}
-            className="block text-sm font-medium text-gray-700"
+            className="form-label"
           >
             {label}
-            {required && <span className="text-red-500 ml-1">*</span>}
+            {required && <span className="form-required">*</span>}
           </label>
         )}
         <Combobox
@@ -172,12 +172,8 @@ export const SelectInput = forwardRef<HTMLInputElement, SelectInputProps>(
                 <ComboboxInput
                   id={selectId}
                   className={clsx(
-                    "w-full rounded-md border py-2 pl-3 pr-20 text-base",
-                    "focus:outline-none focus:ring-1",
-                    "disabled:cursor-not-allowed disabled:opacity-50",
-                    error
-                      ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                      : "border-gray-300 focus:border-blue-500 focus:ring-blue-500",
+                    "form-input-base pr-20 pl-3",
+                    error ? "form-input-error" : "form-input-normal",
                     "cursor-pointer"
                   )}
                   displayValue={() => selected?.label || ""}
@@ -200,7 +196,7 @@ export const SelectInput = forwardRef<HTMLInputElement, SelectInputProps>(
                     <button
                       type="button"
                       onClick={handleClear}
-                      className="flex items-center px-2 hover:text-gray-700 touch-manipulation pointer-events-auto"
+                      className="form-clear-button"
                       aria-label="Limpiar selección"
                     >
                       <X className="h-5 w-5 text-gray-400" />
@@ -245,12 +241,12 @@ export const SelectInput = forwardRef<HTMLInputElement, SelectInputProps>(
           )}
         </Combobox>
         {error && (
-          <p id={`${selectId}-error`} className="mt-1 text-sm text-red-600">
+          <p id={`${selectId}-error`} className="form-error">
             {error}
           </p>
         )}
         {helperText && !error && (
-          <p id={`${selectId}-helper`} className="mt-1 text-sm text-gray-500">
+          <p id={`${selectId}-helper`} className="form-helper">
             {helperText}
           </p>
         )}

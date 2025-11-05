@@ -10,7 +10,7 @@ export interface TextInputProps
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ({ label, error, helperText, className, id, ...props }, ref) => {
-    const inputId = id || (label 
+    const inputId = id || (label
       ? `input-${label.toLowerCase().replace(/\s+/g, "-")}`
       : `input-${Math.random().toString(36).substr(2, 9)}`);
 
@@ -19,22 +19,18 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-sm font-medium text-gray-700"
+            className="form-label"
           >
             {label}
-            {props.required && <span className="text-red-500 ml-1">*</span>}
+            {props.required && <span className="form-required">*</span>}
           </label>
         )}
         <input
           ref={ref}
           id={inputId}
           className={clsx(
-            "mt-1 block w-full rounded-md border px-3 py-2 text-base",
-            "focus:outline-none focus:ring-1",
-            "disabled:cursor-not-allowed disabled:opacity-50",
-            error
-              ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-              : "border-gray-300 focus:border-blue-500 focus:ring-blue-500",
+            "form-input-base",
+            error ? "form-input-error" : "form-input-normal",
             className
           )}
           aria-invalid={error ? "true" : "false"}
@@ -44,12 +40,12 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           {...props}
         />
         {error && (
-          <p id={`${inputId}-error`} className="mt-1 text-sm text-red-600">
+          <p id={`${inputId}-error`} className="form-error">
             {error}
           </p>
         )}
         {helperText && !error && (
-          <p id={`${inputId}-helper`} className="mt-1 text-sm text-gray-500">
+          <p id={`${inputId}-helper`} className="form-helper">
             {helperText}
           </p>
         )}
