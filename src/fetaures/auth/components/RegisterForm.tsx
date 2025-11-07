@@ -6,6 +6,7 @@ import { DOCUMENT_TYPES, GENDER_TYPES } from "@/shared/constants";
 import { DateInput, SelectInput, TextInput } from "@/shared/components/ui";
 import { DEPARTMENTS, getMunicipalitiesByDepartment } from "@/shared/utils/location";
 import { useEffect, useMemo } from "react";
+import { Loader } from "@/shared/components/ui/loader/Loader";
 
 export default function RegisterForm() {
   const {
@@ -41,6 +42,7 @@ export default function RegisterForm() {
 
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)}>
+      <Loader fullscreen={true} message="Guardando datos..." />
       <div className="grid grid-cols-2 gap-4 mb-4">
         <TextInput
           label="Nombre(s)"
