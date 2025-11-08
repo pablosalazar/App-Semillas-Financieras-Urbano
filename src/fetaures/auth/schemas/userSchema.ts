@@ -1,8 +1,8 @@
-import { z } from "zod";
-import { validationMessages } from "@/shared/constants/validationMessages";
 import { DOCUMENT_TYPES_VALUES, GENDER_TYPES_VALUES } from "@/shared/constants";
+import { validationMessages } from "@/shared/constants/validationMessages";
+import { z } from "zod";
 
-export const registerSchema = z.object({
+export const userSchema = z.object({
   firstname: z
     .string()
     .min(1, validationMessages.required)
@@ -25,10 +25,8 @@ export const registerSchema = z.object({
     .regex(/^[0-9]+$/, validationMessages.numbersOnly),
   gender: z.enum(GENDER_TYPES_VALUES, validationMessages.selectOption),
   birthdate: z.date(validationMessages.invalidDate),
-  department: z.string()
-    .min(1, validationMessages.selectOption),
-  municipality: z.string()
-    .min(1, validationMessages.selectOption),
+  department: z.string().min(1, validationMessages.selectOption),
+  municipality: z.string().min(1, validationMessages.selectOption),
   phone: z
     .string()
     .optional()
@@ -43,7 +41,11 @@ export const registerSchema = z.object({
       (value) => !value || z.string().email().safeParse(value).success,
       validationMessages.invalidEmail
     ),
-
 });
 
-export type RegisterInput = z.infer<typeof registerSchema>;
+export type UserInput = z.infer<typeof userSchema>;
+export type User = UserInput & {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
