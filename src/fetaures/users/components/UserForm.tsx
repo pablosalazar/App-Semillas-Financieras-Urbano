@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm, type SubmitHandler } from "react-hook-form";
 
+import { userSchema } from "@/fetaures/users/schemas/userSchema";
 import { DateInput, SelectInput, TextInput } from "@/shared/components/ui";
 import { DOCUMENT_TYPES, GENDER_TYPES } from "@/shared/constants";
 import {
@@ -8,7 +9,7 @@ import {
   getMunicipalitiesByDepartment,
 } from "@/shared/utils/location";
 import { useEffect, useMemo } from "react";
-import { userSchema, type UserInput } from "../schemas";
+import type { UserInput } from "../types";
 
 interface UserFormProps {
   onSubmit: SubmitHandler<UserInput>;

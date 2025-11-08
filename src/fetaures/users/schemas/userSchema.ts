@@ -42,10 +42,3 @@ export const userSchema = z.object({
       validationMessages.invalidEmail
     ),
 });
-
-export type UserInput = z.infer<typeof userSchema>;
-export type User = UserInput & {
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
-};

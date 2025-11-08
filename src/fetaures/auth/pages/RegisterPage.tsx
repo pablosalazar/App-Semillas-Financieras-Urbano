@@ -1,5 +1,5 @@
-import { UserForm } from "../components/UserForm";
-import type { UserInput } from "../schemas";
+import type { UserInput } from "@/fetaures/users/types";
+import { UserForm } from "../../users/components/UserForm";
 
 export function RegisterPage() {
   const onSubmit = (data: UserInput) => {
