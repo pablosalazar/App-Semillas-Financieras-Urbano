@@ -7,6 +7,7 @@ interface AuthContextType {
   setUser: (user: User | null) => void;
   logout: () => void;
   isAuthenticated: boolean;
+  isLoading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -67,12 +68,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setUser,
     logout,
     isAuthenticated: !!user,
+    isLoading,
   };
-
-  // Don't render children until we've checked localStorage
-  if (isLoading) {
-    return null; // or a loading spinner
-  }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
