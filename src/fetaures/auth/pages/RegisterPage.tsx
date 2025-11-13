@@ -32,7 +32,7 @@ export function RegisterPage() {
           firstname: "Juan Pablo",
           lastname: "Salazar Restrepo",
           documentType: "CC",
-          documentNumber: "1234567890",
+          documentNumber: "1061701570",
           gender: "Masculino",
           birthdate: new Date(),
           department: "Cauca",

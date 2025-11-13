@@ -1,0 +1,1 @@
+1. Add data policies in register form
