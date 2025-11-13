@@ -8,7 +8,7 @@ import {
   DEPARTMENTS,
   getMunicipalitiesByDepartment,
 } from "@/shared/utils/location";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import type { UserInput } from "../types";
 
 interface UserFormProps {
@@ -31,6 +31,7 @@ export function UserForm({ onSubmit, defaultValues, formId }: UserFormProps) {
   });
 
   const selectedDepartment = watch("department");
+  const previousDepartmentRef = useRef<string | undefined>(selectedDepartment);
 
   const municipalities = useMemo(() => {
     if (!selectedDepartment) {
@@ -40,9 +41,15 @@ export function UserForm({ onSubmit, defaultValues, formId }: UserFormProps) {
   }, [selectedDepartment]);
 
   useEffect(() => {
-    if (selectedDepartment) {
+    // Only clear municipality if department actually changed (not on initial mount)
+    if (
+      selectedDepartment &&
+      previousDepartmentRef.current !== undefined &&
+      previousDepartmentRef.current !== selectedDepartment
+    ) {
       setValue("municipality", "");
     }
+    previousDepartmentRef.current = selectedDepartment;
   }, [selectedDepartment, setValue]);
 
   return (
