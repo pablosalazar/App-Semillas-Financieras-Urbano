@@ -1,8 +1,8 @@
 import type { RouteObject } from "react-router";
 
 import AuthLayout from "@/layouts/AuthLayout";
+import { PublicRoute } from "@/shared/components/guards";
 import { lazy } from "react";
-import { PublicRoute } from "./PublicRoute";
 
 const LoginPage = lazy(() => import("@/fetaures/auth/pages/LoginPage"));
 const RegisterPage = lazy(() => import("@/fetaures/auth/pages/RegisterPage"));
