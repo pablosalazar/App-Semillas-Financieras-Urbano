@@ -15,6 +15,9 @@ export function LoginForm({ onSubmit, formId }: LoginFormProps) {
     formState: { errors },
   } = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+      documentNumber: "1061701570",
+    },
   });
 
   return (

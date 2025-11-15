@@ -12,7 +12,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <Toaster position="top-right" richColors />
+        <Toaster position="top-right" richColors closeButton />
         <RouterProvider router={router} />
         <ReactQueryDevtools />
       </AuthProvider>
