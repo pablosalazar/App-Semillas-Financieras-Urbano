@@ -82,3 +82,20 @@ export function useAuth() {
   }
   return context;
 }
+
+/**
+ * Hook that returns a non-null user. Use this in components that are guaranteed
+ * to be within a protected route (e.g., components under AppLayout).
+ * Throws an error if user is null, which should never happen in protected routes.
+ */
+
+// eslint-disable-next-line react-refresh/only-export-components
+export function useAuthenticatedUser(): User {
+  const { user } = useAuth();
+  if (!user) {
+    throw new Error(
+      "useAuthenticatedUser must be used within a protected route"
+    );
+  }
+  return user;
+}
