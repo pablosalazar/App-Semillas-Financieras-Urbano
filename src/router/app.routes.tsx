@@ -5,6 +5,7 @@ import { ProtectedRoute } from "@/shared/components/guards";
 import { lazy } from "react";
 
 const HomePage = lazy(() => import("@/fetaures/app/pages/HomePage"));
+const ProfilePage = lazy(() => import("@/fetaures/users/pages/ProfilePage"));
 
 export const AppRoutes: RouteObject = {
   element: <ProtectedRoute />,
@@ -15,6 +16,10 @@ export const AppRoutes: RouteObject = {
         {
           path: "/",
           element: <HomePage />,
+        },
+        {
+          path: "/profile",
+          element: <ProfilePage />,
         },
       ],
     },

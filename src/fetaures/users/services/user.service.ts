@@ -2,10 +2,12 @@ import { db } from "@/lib/firebase";
 import {
   addDoc,
   collection,
-  query,
-  where,
+  doc,
   getDocs,
+  query,
   serverTimestamp,
+  updateDoc,
+  where,
 } from "firebase/firestore";
 import type { User, UserInput } from "../types";
 
@@ -55,6 +57,7 @@ export const getUserByDocumentNumber = async (
     const user: User = {
       ...(data as UserInput),
       id: doc.id,
+      birthdate: data.birthdate?.toDate() || new Date(),
       createdAt: data.createdAt?.toDate() || new Date(),
       updatedAt: data.updatedAt?.toDate() || new Date(),
     };
@@ -63,5 +66,25 @@ export const getUserByDocumentNumber = async (
   } catch (error) {
     console.error("Error getting user:", error);
     throw new Error("Failed to get user. Please try again.");
+  }
+};
+
+export const updateUser = async (userData: User): Promise<User> => {
+  try {
+    await updateDoc(doc(db, USERS_COLLECTION, userData.id), {
+      ...userData,
+      updatedAt: serverTimestamp(),
+    });
+
+    const now = new Date();
+    const updatedUser: User = {
+      ...userData,
+      updatedAt: now,
+    };
+
+    return updatedUser;
+  } catch (error) {
+    console.error("Error updating user:", error);
+    throw new Error("Failed to update user. Please try again.");
   }
 };

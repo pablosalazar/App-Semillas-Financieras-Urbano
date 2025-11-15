@@ -34,7 +34,7 @@ export function RegisterPage() {
           documentType: "CC",
           documentNumber: "1061701570",
           gender: "Masculino",
-          birthdate: new Date(),
+          birthdate: new Date(1987, 8, 15),
           department: "Cauca",
           municipality: "Popayán",
           phone: "3178901234",
