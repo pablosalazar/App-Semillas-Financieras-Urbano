@@ -18,7 +18,6 @@ export function Header() {
     setIsOpen(false);
   };
 
-  // Close modal when route changes
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);

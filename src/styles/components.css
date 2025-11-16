@@ -1,5 +1,4 @@
 @layer components {
-
     .form-label {
         @apply block text-sm font-medium text-gray-700;
     }
@@ -9,14 +8,16 @@
     }
 
     .form-input-base {
-        @apply mt-1 block w-full rounded-md border px-3 py-2 text-base;
+        @apply mt-1 block w-full rounded-xl border px-3 py-2 text-base bg-white;
         @apply focus:outline-none focus:ring-1;
         @apply disabled:cursor-not-allowed disabled:opacity-50;
     }
 
     .form-input-normal {
-        @apply border-gray-300 focus:border-blue-500 focus:ring-blue-500;
+        @apply border-2 border-(--color-primary) text-(--color-primary) focus:border-blue-500 focus:ring-blue-500;
     }
+
+
 
     .form-input-error {
         @apply border-red-500 focus:border-red-500 focus:ring-red-500;
