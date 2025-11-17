@@ -10,16 +10,16 @@ import {
   getDocs,
   serverTimestamp,
 } from "firebase/firestore";
-import { sampleUsers } from "../src/fetaures/users/data/sampleUsers";
+import { sampleUsers } from "./data/sampleUsers";
 import type { User } from "../src/fetaures/users/types";
 
 const USERS_COLLECTION = "users";
 
 /**
- * Resets the users collection by deleting all existing users
+ * Clears the users collection by deleting all existing users
  * @returns Promise<number> The number of users deleted
  */
-export const resetUsers = async (): Promise<number> => {
+export const clearUsers = async (): Promise<number> => {
   try {
     const querySnapshot = await getDocs(collection(db, USERS_COLLECTION));
     const deletePromises = querySnapshot.docs.map((document) =>
@@ -30,8 +30,8 @@ export const resetUsers = async (): Promise<number> => {
 
     return querySnapshot.size;
   } catch (error) {
-    console.error("Error resetting users:", error);
-    throw new Error("Failed to reset users. Please try again.");
+    console.error("Error clearing users:", error);
+    throw new Error("Failed to clear users. Please try again.");
   }
 };
 
@@ -68,11 +68,22 @@ export const seedUsers = async (): Promise<User[]> => {
   }
 };
 
+/**
+ * Resets the users collection by clearing and then seeding with sample data
+ * @returns Promise<User[]> Array of created users
+ */
+const resetUsers = async (): Promise<User[]> => {
+  const deletedCount = await clearUsers();
+  console.log(`✅ Cleared ${deletedCount} user(s) from the database.`);
+  const createdUsers = await seedUsers();
+  return createdUsers;
+};
+
 // CLI execution
 const command = process.argv[2];
 
-if (command === "reset") {
-  resetUsers()
+if (command === "clear") {
+  clearUsers()
     .then((count) => {
       console.log(
         `✅ Successfully deleted ${count} user(s) from the database.`
@@ -80,7 +91,7 @@ if (command === "reset") {
       process.exit(0);
     })
     .catch((error) => {
-      console.error("❌ Error resetting database:", error);
+      console.error("❌ Error clearing database:", error);
       process.exit(1);
     });
 } else if (command === "seed") {
@@ -100,8 +111,25 @@ if (command === "reset") {
       console.error("❌ Error seeding database:", error);
       process.exit(1);
     });
+} else if (command === "reset") {
+  resetUsers()
+    .then((users) => {
+      console.log(
+        `✅ Successfully reset database. Seeded ${users.length} user(s):`
+      );
+      users.forEach((user) => {
+        console.log(
+          `   - ${user.firstname} ${user.lastname} (${user.documentNumber})`
+        );
+      });
+      process.exit(0);
+    })
+    .catch((error) => {
+      console.error("❌ Error resetting database:", error);
+      process.exit(1);
+    });
 } else {
-  console.error("❌ Invalid command. Use 'reset' or 'seed'");
-  console.log("Usage: pnpm db:reset or pnpm db:seed");
+  console.error("❌ Invalid command. Use 'clear', 'seed', or 'reset'");
+  console.log("Usage: pnpm db:clear, pnpm db:seed, or pnpm db:reset");
   process.exit(1);
 }

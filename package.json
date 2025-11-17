@@ -8,8 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "db:reset": "tsx scripts/db.ts reset",
-    "db:seed": "tsx scripts/db.ts seed"
+    "db:clear": "tsx scripts/db.ts clear",
+    "db:seed": "tsx scripts/db.ts seed",
+    "db:reset": "tsx scripts/db.ts reset"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
