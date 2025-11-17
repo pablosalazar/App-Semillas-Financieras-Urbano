@@ -54,7 +54,7 @@ export function UserForm({ onSubmit, defaultValues, formId }: UserFormProps) {
 
   return (
     <form id={formId} noValidate onSubmit={handleSubmit(onSubmit)}>
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <TextInput
           label="Nombre(s)"
           {...register("firstname")}

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { toast } from "sonner";
 import { UserForm } from "../../users/components/UserForm";
 import { useRegister } from "../hooks/useRegister";
+import { CloseButton } from "@/shared/components/CloseButton";
 
 export function RegisterPage() {
   const navigate = useNavigate();
@@ -23,7 +24,9 @@ export function RegisterPage() {
   };
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="card-withe-transparent w-full md:max-w-[60%] mx-auto p-4 sm:p-6 md:p-10 space-y-6">
+      <CloseButton redirectTo="/login" className="absolute -top-5 -right-5" />
+
       {isPending && <Loader />}
       <UserForm
         onSubmit={onSubmit}
@@ -46,7 +49,7 @@ export function RegisterPage() {
         type="submit"
         form="register-form"
         disabled={isPending}
-        className="w-full rounded-md bg-blue-600 px-4 py-2 text-white font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn btn-orange"
       >
         {isPending ? "Registrando..." : "Registrar"}
       </button>
