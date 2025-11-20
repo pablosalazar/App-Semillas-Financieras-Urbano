@@ -1,12 +1,7 @@
-import {
-  Button,
-  CloseButton,
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-} from "@headlessui/react";
+import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import clsx from "clsx";
 import { type ReactNode } from "react";
+import { CloseButton } from "../CloseButton";
 
 export interface ModalProps {
   isOpen: boolean;
@@ -40,12 +35,15 @@ export const Modal = ({
         <div className="flex min-h-full items-center justify-center p-4 text-center">
           <DialogPanel
             className={clsx(
-              "w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all",
+              "relative w-full transform  rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all",
               sizeClasses[size],
               className
             )}
           >
-            <CloseButton as={Button}>X</CloseButton>
+            <CloseButton
+              onClick={onClose}
+              className="absolute -top-5 -right-5"
+            />
             <div>{children}</div>
           </DialogPanel>
         </div>

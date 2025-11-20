@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { UserForm } from "../components/UserForm";
 import { useUpdate } from "../hooks/useUpdate";
 import type { UserInput } from "../types";
+import { CloseButton } from "@/shared/components/CloseButton";
 
 export default function ProfilePage() {
   const user = useAuthenticatedUser();
@@ -25,10 +26,6 @@ export default function ProfilePage() {
     },
   });
 
-  const handleCancel = () => {
-    navigate("/");
-  };
-
   const onSubmit = (data: UserInput) => {
     // Merge UserInput with existing user data (id, createdAt, updatedAt)
     const userToUpdate = {
@@ -41,35 +38,25 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <>
       {isPending && <Loader />}
-      <h1 className="text-2xl font-bold mb-6">Mi Perfil</h1>
-      <div className="bg-white rounded-lg shadow p-6">
+      <div className="card-withe-transparent w-full md:max-w-[60%] mx-auto p-4 sm:p-6 md:p-10 space-y-6">
+        <CloseButton redirectTo="/" className="absolute -top-5 -right-5" />
         <UserForm
           onSubmit={onSubmit}
           formId="update-profile-form"
           defaultValues={user}
         />
 
-        <div className="mt-4 flex justify-end gap-2">
-          <button
-            type="button"
-            onClick={handleCancel}
-            disabled={isPending}
-            className="w-full rounded-md bg-red-600 px-4 py-2 text-white font-medium hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Cancelar
-          </button>
-          <button
-            type="submit"
-            form="update-profile-form"
-            disabled={isPending}
-            className="w-full rounded-md bg-blue-600 px-4 py-2 text-white font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isPending ? "Actualizando..." : "Actualizar perfil"}
-          </button>
-        </div>
+        <button
+          type="submit"
+          form="update-profile-form"
+          disabled={isPending}
+          className="btn btn-orange"
+        >
+          {isPending ? "Actualizando..." : "Actualizar perfil"}
+        </button>
       </div>
-    </div>
+    </>
   );
 }

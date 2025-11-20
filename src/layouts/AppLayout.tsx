@@ -3,9 +3,11 @@ import { Header } from "./components/Header";
 
 function AppLayout() {
   return (
-    <main>
+    <main className="h-screen flex flex-col bg-home overflow-hidden">
       <Header />
-      <Outlet />
+      <div className="flex-1 ">
+        <Outlet />
+      </div>
     </main>
   );
 }
