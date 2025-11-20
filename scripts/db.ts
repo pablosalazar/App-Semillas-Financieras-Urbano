@@ -11,7 +11,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { sampleUsers } from "./data/sampleUsers";
-import type { User } from "../src/fetaures/users/types";
+import type { User } from "../src/features/users/types";
 
 const USERS_COLLECTION = "users";
 

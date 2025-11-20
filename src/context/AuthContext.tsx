@@ -1,4 +1,4 @@
-import type { User } from "@/fetaures/users/types";
+import type { User } from "@/features/users/types";
 import type { ReactNode } from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 

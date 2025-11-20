@@ -1,5 +1,5 @@
 import { useAuth } from "@/context";
-import type { User } from "@/fetaures/users/types";
+import type { User } from "@/features/users/types";
 import { Loader } from "@/shared/components/ui/loader/Loader";
 import { displayName } from "@/shared/utils/user";
 import { Link, useNavigate } from "react-router";

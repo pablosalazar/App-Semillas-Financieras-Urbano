@@ -1,5 +1,5 @@
 import { useAuthenticatedUser } from "@/context";
-import { UserSummary } from "@/fetaures/users/components/UserSummary";
+import { UserSummary } from "@/features/users/components/UserSummary";
 import { Modal } from "@/shared/components/ui";
 import { displayName } from "@/shared/utils/user";
 import { useEffect, useState } from "react";

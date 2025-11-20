@@ -1,15 +1,15 @@
-import { createUser } from "@/fetaures/users/services/user.service";
-import type { User, UserInput } from "@/fetaures/users/types";
+import { updateUser } from "@/features/users/services/user.service";
+import type { User } from "@/features/users/types";
 import { useMutation } from "@tanstack/react-query";
 
-interface UseRegisterOptions {
+interface UseUpdateOptions {
   onSuccess?: (user: User) => void;
   onError?: (error: Error) => void;
 }
 
-export const useRegister = (options?: UseRegisterOptions) => {
+export const useUpdate = (options?: UseUpdateOptions) => {
   return useMutation({
-    mutationFn: (userData: UserInput) => createUser(userData),
+    mutationFn: (userData: User) => updateUser(userData),
     onSuccess: (user) => {
       options?.onSuccess?.(user);
     },

@@ -1,4 +1,4 @@
-import type { UserInput } from "@/fetaures/users/types";
+import type { UserInput } from "@/features/users/types";
 import { Loader } from "@/shared/components/ui/loader/Loader";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";

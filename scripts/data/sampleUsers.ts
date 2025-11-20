@@ -1,4 +1,4 @@
-import type { UserInput } from "../../src/fetaures/users/types";
+import type { UserInput } from "../../src/features/users/types";
 
 // Helper function to create dates at midnight local time (not UTC)
 // This prevents timezone issues when displaying birthdates

@@ -1,5 +1,5 @@
-import { getUserByDocumentNumber } from "@/fetaures/users/services/user.service";
-import type { User } from "@/fetaures/users/types";
+import { getUserByDocumentNumber } from "@/features/users/services/user.service";
+import type { User } from "@/features/users/types";
 import { useMutation } from "@tanstack/react-query";
 import type { LoginInput } from "../schemas";
 

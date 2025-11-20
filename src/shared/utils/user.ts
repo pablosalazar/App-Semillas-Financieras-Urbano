@@ -1,4 +1,4 @@
-import type { User } from "@/fetaures/users/types";
+import type { User } from "@/features/users/types";
 
 export function displayName(
   user: Pick<User, "firstname" | "lastname">
