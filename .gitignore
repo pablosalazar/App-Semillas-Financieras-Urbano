@@ -24,3 +24,10 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Capacitor
+android/
+ios/
+*.orig
+*.jks
+*.keystore

@@ -10,9 +10,14 @@
     "preview": "vite preview",
     "db:clear": "tsx scripts/db.ts clear",
     "db:seed": "tsx scripts/db.ts seed",
-    "db:reset": "tsx scripts/db.ts reset"
+    "db:reset": "tsx scripts/db.ts reset",
+    "android:run": "export JAVA_HOME=\"/Applications/Android Studio.app/Contents/jbr/Contents/Home\" && pnpm build && cap sync && cd android && ./gradlew installDebug",
+    "android:apk": "export JAVA_HOME=\"/Applications/Android Studio.app/Contents/jbr/Contents/Home\" && pnpm build && cap sync && cd android && ./gradlew assembleDebug"
   },
   "dependencies": {
+    "@capacitor/android": "^7.4.4",
+    "@capacitor/cli": "^7.4.4",
+    "@capacitor/core": "^7.4.4",
     "@headlessui/react": "^2.2.9",
     "@hookform/resolvers": "^5.2.2",
     "@tailwindcss/vite": "^4.1.16",
