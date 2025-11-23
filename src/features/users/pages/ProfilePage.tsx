@@ -1,6 +1,6 @@
 import { useAuth, useAuthenticatedUser } from "@/context/AuthContext";
 import { Loader } from "@/shared/components/ui/loader/Loader";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import { UserForm } from "../components/UserForm";
 import { useUpdate } from "../hooks/useUpdate";
@@ -48,14 +48,19 @@ export default function ProfilePage() {
           defaultValues={user}
         />
 
-        <button
-          type="submit"
-          form="update-profile-form"
-          disabled={isPending}
-          className="btn btn-orange"
-        >
-          {isPending ? "Actualizando..." : "Actualizar perfil"}
-        </button>
+        <div className=" mx-auto flex justify-between gap-8">
+          <Link to="/" className="btn btn-gray">
+            Cancelar
+          </Link>
+          <button
+            type="submit"
+            form="update-profile-form"
+            disabled={isPending}
+            className="btn btn-orange"
+          >
+            {isPending ? "Actualizando..." : "Guardar cambios"}
+          </button>
+        </div>
       </div>
     </>
   );
