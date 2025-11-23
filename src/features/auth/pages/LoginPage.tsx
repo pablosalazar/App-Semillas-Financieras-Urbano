@@ -7,7 +7,7 @@ import { LoginForm } from "../components/LoginForm";
 import { useLogin } from "../hooks/useLogin";
 import type { LoginInput } from "../schemas";
 
-import FMMLogo from "@/assets/images/FMM-icon.png";
+import FMMLogo from "@/assets/images/FMM-logo.png";
 import welcomeImage from "@/assets/images/wellcome-header.png";
 
 export function LoginPage() {

@@ -30,14 +30,16 @@ export function RegisterPage() {
       {isPending && <Loader />}
       <UserForm onSubmit={onSubmit} formId="register-form" />
 
-      <button
-        type="submit"
-        form="register-form"
-        disabled={isPending}
-        className="btn btn-orange mx-auto"
-      >
-        {isPending ? "Registrando..." : "Registrarme"}
-      </button>
+      <div className="text-center">
+        <button
+          type="submit"
+          form="register-form"
+          disabled={isPending}
+          className="btn btn-orange mx-auto"
+        >
+          {isPending ? "Registrando..." : "Registrarme"}
+        </button>
+      </div>
     </div>
   );
 }

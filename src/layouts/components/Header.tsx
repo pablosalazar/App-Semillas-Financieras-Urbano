@@ -5,7 +5,7 @@ import { displayName } from "@/shared/utils/user";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 
-import menuImg from "@/assets/images/menuImg.png";
+import menuImg from "@/assets/images/menu.png";
 import { Avatar } from "@/shared/components/guards/Avatar";
 
 export function Header() {
