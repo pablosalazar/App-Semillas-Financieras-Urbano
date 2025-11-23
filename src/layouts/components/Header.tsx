@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 
 import menuImg from "@/assets/images/menuImg.png";
+import { Avatar } from "@/shared/components/guards/Avatar";
 
 export function Header() {
   const user = useAuthenticatedUser();
@@ -27,9 +28,12 @@ export function Header() {
   return (
     <>
       <header className="py-4 px-6 flex justify-between items-center">
-        <span className="text-xl font-semibold bg-(--cyan) text-white text-shadow-blue px-4 py-1 rounded-full border-3 border-(--yellow)">
-          {displayName(user)}
-        </span>
+        <div className="flex items-center gap-2">
+          <Avatar gender={user.gender} className="w-18! h-18!" />
+          <span className="text-xl font-semibold bg-(--cyan) text-white text-shadow-blue px-4 py-1 rounded-full border-3 border-(--yellow)">
+            {displayName(user)}
+          </span>
+        </div>
         <button onClick={handleOpen}>
           <img src={menuImg} alt="Menu" className="w-15 cursor-pointer" />
         </button>
@@ -38,7 +42,7 @@ export function Header() {
         isOpen={isOpen}
         onClose={handleClose}
         size="full"
-        className="!bg-white/60 border-3 border-(--blue)"
+        className="bg-white/60! border-3 border-(--blue)"
       >
         <UserSummary />
       </Modal>

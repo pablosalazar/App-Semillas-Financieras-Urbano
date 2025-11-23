@@ -1,7 +1,6 @@
 import { useAuth } from "@/context";
 import type { User } from "@/features/users/types";
 import { Loader } from "@/shared/components/ui/loader/Loader";
-import { displayName } from "@/shared/utils/user";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import { LoginForm } from "../components/LoginForm";
@@ -18,7 +17,6 @@ export function LoginPage() {
   const { mutate: loginUser, isPending } = useLogin({
     onSuccess: (user: User) => {
       setUser(user);
-      toast.success(`Bienvenido, ${displayName(user)}!`);
       navigate("/");
     },
     onError: (error) => {
