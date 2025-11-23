@@ -14,7 +14,7 @@
     }
 
     .form-input-normal {
-        @apply border-2 border-(--color-primary) text-(--color-primary) focus:border-blue-500 focus:ring-blue-500;
+        @apply border-2 border-(--blue) text-(--blue) focus:border-blue-500 focus:ring-blue-500;
     }
 
 
