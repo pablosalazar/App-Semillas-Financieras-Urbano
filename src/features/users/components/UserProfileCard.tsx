@@ -9,7 +9,7 @@ interface UserProfileCardProps {
 
 export function UserProfileCard({ user }: UserProfileCardProps) {
   return (
-    <div className="relative bg-(--blue) text-white rounded-xl p-6">
+    <div className="relative bg-(--blue) text-white rounded-xl p-6 pt-15">
       <Avatar
         gender={user.gender}
         className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"

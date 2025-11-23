@@ -28,9 +28,7 @@ export function ModuleCard({
         <div className="relative h-3 bg-gray-200 rounded-full overflow-hidden border border-gray-300">
           <div
             className={`h-full transition-all duration-500 ease-out ${
-              completed
-                ? "bg-linear-to-r from-green-400 to-green-400"
-                : "bg-gray-300"
+              completed ? "bg-green-500" : "bg-gray-300"
             }`}
             style={{ width: `${progress}%` }}
           />

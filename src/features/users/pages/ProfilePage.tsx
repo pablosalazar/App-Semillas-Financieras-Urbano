@@ -49,14 +49,14 @@ export default function ProfilePage() {
         />
 
         <div className=" mx-auto flex justify-between gap-8">
-          <Link to="/" className="btn btn-gray">
+          <Link to="/" className="btn btn-gray btn-full">
             Cancelar
           </Link>
           <button
             type="submit"
             form="update-profile-form"
             disabled={isPending}
-            className="btn btn-orange"
+            className="btn btn-orange btn-full"
           >
             {isPending ? "Actualizando..." : "Guardar cambios"}
           </button>

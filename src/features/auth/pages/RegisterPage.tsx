@@ -34,9 +34,9 @@ export function RegisterPage() {
         type="submit"
         form="register-form"
         disabled={isPending}
-        className="btn btn-orange"
+        className="btn btn-orange mx-auto"
       >
-        {isPending ? "Registrando..." : "Registrar"}
+        {isPending ? "Registrando..." : "Registrarme"}
       </button>
     </div>
   );

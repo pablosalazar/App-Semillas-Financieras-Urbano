@@ -50,7 +50,7 @@ export function LoginPage() {
           type="submit"
           form="login-form"
           disabled={isPending}
-          className="btn btn-orange"
+          className="btn btn-orange btn-full"
         >
           {isPending ? "Ingresando..." : "Ingresar"}
         </button>

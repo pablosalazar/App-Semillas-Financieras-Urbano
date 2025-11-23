@@ -33,11 +33,11 @@
 
 
 .btn {
-  @apply inline-block w-full text-xl text-center rounded-xl px-4 py-2 text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed;
+  @apply inline-flex items-center justify-center gap-2 text-xl text-center rounded-xl px-4 py-2 text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed;
 }
 
 .btn-full {
-  @apply block w-full text-center;
+  @apply w-full;
 }
 
 .btn-orange {
@@ -57,6 +57,19 @@
   background-image: linear-gradient(var(--gray-light), var(--gray));
   text-shadow: 1px 1px 1px rgba(16, 8, 6, 0.2);
   border: 3px solid white;
+}
+
+.btn-red {
+  background-color: var(--red);
+  background-image: linear-gradient(var(--red-light), var(--red));
+  text-shadow: 1px 1px 1px rgba(16, 8, 6, 0.2);
+  border: 3px solid white;
+}
+
+.btn-outline-red {
+  background-color: white;
+  border: 3px solid var(--red);
+  color: var(--red);
 }
 
 .text-blue {
