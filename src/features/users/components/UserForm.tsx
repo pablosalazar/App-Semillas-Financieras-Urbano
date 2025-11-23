@@ -10,6 +10,7 @@ import {
 } from "@/shared/utils/location";
 import { useEffect, useMemo, useRef } from "react";
 import type { UserInput } from "../types";
+import { Avatar } from "@/shared/components/guards/Avatar";
 
 interface UserFormProps {
   onSubmit: SubmitHandler<UserInput>;
@@ -52,8 +53,20 @@ export function UserForm({ onSubmit, defaultValues, formId }: UserFormProps) {
     previousDepartmentRef.current = selectedDepartment;
   }, [selectedDepartment, setValue]);
 
+  const gender = watch("gender");
+
   return (
-    <form id={formId} noValidate onSubmit={handleSubmit(onSubmit)}>
+    <form
+      id={formId}
+      noValidate
+      onSubmit={handleSubmit(onSubmit)}
+      className="pt-8"
+    >
+      <Avatar
+        gender={gender}
+        className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      />
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <TextInput
           label="Nombre(s)"

@@ -28,22 +28,7 @@ export function RegisterPage() {
       <CloseButton redirectTo="/login" className="absolute -top-5 -right-5" />
 
       {isPending && <Loader />}
-      <UserForm
-        onSubmit={onSubmit}
-        formId="register-form"
-        defaultValues={{
-          firstname: "Juan Pablo",
-          lastname: "Salazar Restrepo",
-          documentType: "CC",
-          documentNumber: "1061701570",
-          gender: "Masculino",
-          birthdate: new Date(1987, 8, 15),
-          department: "Cauca",
-          municipality: "Popayán",
-          phone: "3178901234",
-          email: "pablo.salazar@gmail.com",
-        }}
-      />
+      <UserForm onSubmit={onSubmit} formId="register-form" />
 
       <button
         type="submit"
