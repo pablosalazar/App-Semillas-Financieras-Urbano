@@ -42,7 +42,7 @@ export function Header() {
         isOpen={isOpen}
         onClose={handleClose}
         size="full"
-        className="bg-white/60! border-3 border-(--blue)"
+        className="bg-white/80! border-3 border-(--blue)"
       >
         <UserSummary />
       </Modal>
