@@ -5,7 +5,7 @@ import { ProtectedRoute } from "@/shared/components/guards";
 import { getModuleRoutes } from "@/features/modules";
 import { lazy } from "react";
 
-const HomePage = lazy(() => import("@/features/app/pages/HomePage"));
+const HomePage = lazy(() => import("@/features/home/pages/HomePage"));
 const ProfilePage = lazy(() => import("@/features/users/pages/ProfilePage"));
 
 export const AppRoutes: RouteObject = {
@@ -15,7 +15,7 @@ export const AppRoutes: RouteObject = {
       element: <AppLayout />,
       children: [
         {
-          path: "/",
+          path: "/home",
           element: <HomePage />,
         },
         {

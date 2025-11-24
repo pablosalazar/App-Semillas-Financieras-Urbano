@@ -12,9 +12,8 @@ export function PublicRoute() {
 
   // If user is already authenticated, redirect to home
   if (isAuthenticated) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/home" replace />;
   }
 
   return <Outlet />;
 }
-

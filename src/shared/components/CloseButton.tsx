@@ -1,4 +1,4 @@
-import closeImg from "@/assets/images/close.png";
+import closeImg from "@/assets/images/controls/close.png";
 import clsx from "clsx";
 import { useNavigate } from "react-router";
 

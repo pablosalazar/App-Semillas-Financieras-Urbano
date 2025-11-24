@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { modules } from "@/shared/constants/modules";
-import arrowLeftImg from "@/assets/images/arrows/arrow-left.png";
-import arrowRightImg from "@/assets/images/arrows/arrow-right.png";
+import arrowLeftImg from "@/assets/images/controls/arrow-left.png";
+import arrowRightImg from "@/assets/images/controls/arrow-right.png";
 
 export function ModulesSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -45,7 +45,7 @@ export function ModulesSlider() {
       <button
         onClick={goToPrevSlide}
         disabled={currentSlide === 0}
-        className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 transition-all ${
+        className={`absolute left-0 top-1/2 -translate-y-1/2  transition-all ${
           currentSlide === 0
             ? "opacity-50 cursor-not-allowed pointer-events-none"
             : "hover:scale-110"
@@ -62,7 +62,7 @@ export function ModulesSlider() {
       <button
         onClick={goToNextSlide}
         disabled={currentSlide === slides.length - 1}
-        className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 transition-all ${
+        className={`absolute right-0 top-1/2 -translate-y-1/2  transition-all ${
           currentSlide === slides.length - 1
             ? "opacity-50 cursor-not-allowed pointer-events-none"
             : "hover:scale-110"

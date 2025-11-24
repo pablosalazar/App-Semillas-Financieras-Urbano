@@ -17,7 +17,7 @@ export function LoginPage() {
   const { mutate: loginUser, isPending } = useLogin({
     onSuccess: (user: User) => {
       setUser(user);
-      navigate("/");
+      navigate("/home");
     },
     onError: (error) => {
       toast.error(
