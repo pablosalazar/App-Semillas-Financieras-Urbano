@@ -44,7 +44,7 @@ export default function QuestionsPages() {
   const allQuestionsAnswered = Object.keys(answers).length === totalQuestions;
 
   return (
-    <div className="flex flex-col min-h-screen px-4  -mt-10">
+    <div className="flex flex-col min-h-screen px-4">
       {/* Header with Ribbon */}
       <div className="flex justify-center">
         <div className="ribbon ribbon-orange mb-3">

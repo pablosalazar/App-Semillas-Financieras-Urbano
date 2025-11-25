@@ -3,9 +3,10 @@ import { UserSummary } from "@/features/users/components/UserSummary";
 import { Modal } from "@/shared/components/ui";
 import { displayName } from "@/shared/utils/user";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
 
 import menuImg from "@/assets/images/controls/menu.png";
+import homeImg from "@/assets/images/controls/home.png";
 import { Avatar } from "@/shared/components/guards/Avatar";
 
 export function Header() {
@@ -27,16 +28,21 @@ export function Header() {
 
   return (
     <>
-      <header className="py-4 px-6 flex justify-between items-center">
+      <header className="py-2 px-6 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <Avatar gender={user.gender} className="w-18! h-18!" />
+          <Avatar gender={user.gender} className="w-16! h-16!" />
           <span className="text-xl font-semibold bg-(--cyan) text-white text-shadow-blue px-4 py-1 rounded-full border-3 border-(--yellow)">
             {displayName(user)}
           </span>
         </div>
-        <button onClick={handleOpen}>
-          <img src={menuImg} alt="Menu" className="w-15 cursor-pointer" />
-        </button>
+        <div className="flex items-center gap-6">
+          <Link to="/">
+            <img src={homeImg} alt="Home" className="w-12 cursor-pointer" />
+          </Link>
+          <button onClick={handleOpen}>
+            <img src={menuImg} alt="Menu" className="w-14 cursor-pointer" />
+          </button>
+        </div>
       </header>
       <Modal
         isOpen={isOpen}
