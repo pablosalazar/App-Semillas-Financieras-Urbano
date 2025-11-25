@@ -7,6 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: "./", // Required for Capacitor
+  assetsInclude: ["**/*.m4v"], // Treat .m4v video files as static assets
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

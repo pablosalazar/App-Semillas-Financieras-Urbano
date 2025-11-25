@@ -1,5 +1,6 @@
 import type { ModuleRoutes } from "./types";
-import { evaluacionInicialRoutes } from "./1-evaluacion-inicial/routes";
+import { evaluacionInicialRoutes } from "./0-evaluacion-inicial/routes";
+import { cajeroAutomaticoRoutes } from "./9-cajero-automatico/routes";
 
 /**
  * Registry of all module routes
@@ -10,7 +11,7 @@ import { evaluacionInicialRoutes } from "./1-evaluacion-inicial/routes";
  */
 export const modules: ModuleRoutes[] = [
   evaluacionInicialRoutes,
-  // Add more modules here as they are created
+  cajeroAutomaticoRoutes,
 ];
 
 /**
