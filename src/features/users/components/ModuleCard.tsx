@@ -1,3 +1,5 @@
+import { ProgressBar } from "@/shared/components/ProgressBar";
+
 interface ModuleCardProps {
   id: number;
   name: string;
@@ -25,19 +27,12 @@ export function ModuleCard({
       </div>
 
       <div className="space-y-1">
-        <div className="relative h-3 bg-gray-200 rounded-full overflow-hidden border border-gray-300">
-          <div
-            className={`h-full transition-all duration-500 ease-out ${
-              completed ? "bg-green-500" : "bg-gray-300"
-            }`}
-            style={{ width: `${progress}%` }}
-          />
-        </div>
+        <ProgressBar current={progress} total={100} />
 
         {/* Progress text */}
         <p
           className={`text-xs font-semibold text-center ${
-            completed ? "text-green-600" : "text-gray-500"
+            completed ? "text-(--blue)" : "text-gray-500"
           }`}
         >
           {progressText}

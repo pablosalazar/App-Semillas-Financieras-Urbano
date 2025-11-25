@@ -2,6 +2,7 @@ import { useState } from "react";
 import { modules } from "@/shared/constants/modules";
 import arrowLeftImg from "@/assets/images/controls/arrow-left.png";
 import arrowRightImg from "@/assets/images/controls/arrow-right.png";
+import { Link } from "react-router";
 
 export function ModulesSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -34,7 +35,9 @@ export function ModulesSlider() {
               className="min-w-full grid grid-cols-3 gap-6 px-10"
             >
               {slideModules.map((module) => (
-                <img src={module.image} alt={module.name} className="" />
+                <Link key={module.id} to={module.path}>
+                  <img src={module.image} alt={module.name} className="" />
+                </Link>
               ))}
             </div>
           ))}

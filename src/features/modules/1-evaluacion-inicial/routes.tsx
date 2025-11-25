@@ -16,7 +16,7 @@ export const evaluacionInicialRoutes: ModuleRoutes = {
       element: <IntroPage />,
     },
     {
-      path: "questions",
+      path: "preguntas",
       element: <QuestionsPages />,
     },
   ],

@@ -75,3 +75,69 @@
 .text-blue {
   color: var(--blue);
 }
+
+.ribbon {
+  padding: 0.31em 3em;
+  position: relative;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(90deg,
+      #024a73 0%,
+      var(--blue) 50%,
+      #024a73 100%);
+  display: inline-block;
+
+  &:before,
+  &:after {
+    content: "";
+    width: 1.9em;
+    bottom: -0.5em;
+    position: absolute;
+    z-index: 3;
+    display: block;
+    border: 0.9em solid #024a73;
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+  }
+
+  &:before {
+    left: -1.35em;
+    border-right-width: 0.75em;
+    border-left-color: transparent;
+  }
+
+  &:after {
+    right: -1.35em;
+    border-left-width: 0.75em;
+    border-right-color: transparent;
+  }
+
+  .content {
+    font-size: 18px;
+    font-weight: 500;
+
+    &:before,
+    &:after {
+      content: "";
+      bottom: -0.5em;
+      position: absolute;
+      z-index: 3;
+      display: block;
+      border-style: solid;
+      border-color: #013a5a transparent transparent transparent;
+    }
+
+    &:before {
+      left: 0;
+      border-width: 0.5em 0 0 0.5em;
+    }
+
+    &:after {
+      right: 0;
+      border-width: 0.5em 0.5em 0 0;
+    }
+  }
+}
