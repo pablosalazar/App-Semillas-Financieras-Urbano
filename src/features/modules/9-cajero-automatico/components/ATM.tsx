@@ -1,0 +1,115 @@
+import btnRightATM from "../assets/images/btn-right-atm.png";
+import btnLeftATM from "../assets/images/btn-left-atm.png";
+import fmmHeader from "../assets/images/fmm-header.png";
+import "../styles.css";
+
+interface ATMConfig {
+  left: {
+    number: number;
+    label: string;
+    href: string | null;
+  }[];
+  right: {
+    number: number;
+    label: string;
+    href: string | null;
+  }[];
+}
+
+interface ATMProps {
+  config: ATMConfig;
+}
+
+const NUM_BUTTONS_PER_COL = 4;
+
+export function ATM({ config }: ATMProps) {
+  return (
+    <div className="atm bg-default">
+      <div className="atm__header"></div>
+
+      <div className="atm__main">
+        <div className="atm__sidebar atm__sidebar--left">
+          <div className="atm__buttons">
+            {Array(NUM_BUTTONS_PER_COL)
+              .fill(0)
+              .map((_, index) => (
+                <button key={index} className="atm__button">
+                  <img
+                    src={btnLeftATM}
+                    alt={`Left button ${index + 1}`}
+                    className="atm__button-img"
+                  />
+                </button>
+              ))}
+          </div>
+        </div>
+
+        <div className="atm__screen">
+          <div className="atm__screen-header">
+            <img src={fmmHeader} alt="FMM Header" className="atm__logo" />
+            <h2 className="atm__title">Selecciona tu transacción</h2>
+          </div>
+
+          <div className="atm__menu">
+            <div className="atm__menu-column atm__menu-column--left">
+              {Array(NUM_BUTTONS_PER_COL)
+                .fill(0)
+                .map((_, index) => {
+                  const option = config.left.find(
+                    (option) => option.number === index + 1
+                  );
+
+                  if (!option) {
+                    return <div key={index} className="atm__menu-option" />;
+                  }
+
+                  return (
+                    <div key={index} className="atm__menu-option">
+                      {option.label}
+                    </div>
+                  );
+                })}
+            </div>
+            <div className="atm__menu-column atm__menu-column--right">
+              {Array(NUM_BUTTONS_PER_COL)
+                .fill(0)
+                .map((_, index) => {
+                  const option = config.right.find(
+                    (option) => option?.number === index + 1
+                  );
+
+                  if (!option) {
+                    return <div key={index} className="atm__menu-option" />;
+                  }
+
+                  return (
+                    <div key={index} className="atm__menu-option">
+                      {option.label}
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+        </div>
+
+        <div className="atm__sidebar atm__sidebar--right">
+          <div className="atm__buttons">
+            {Array(NUM_BUTTONS_PER_COL)
+              .fill(0)
+              .map((option, index) => (
+                <button key={option.id} className="atm__button">
+                  <img
+                    src={btnRightATM}
+                    alt={`Right button ${index + 1}`}
+                    className="atm__button-img"
+                  />
+                </button>
+              ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="atm__footer"></div>
+    </div>
+  );
+}
