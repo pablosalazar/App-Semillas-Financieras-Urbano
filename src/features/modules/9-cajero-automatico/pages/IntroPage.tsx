@@ -5,15 +5,15 @@ export default function IntroPage() {
   return (
     <div className="flex flex-col min-h-screen px-4">
       {/* Header with Ribbon */}
-      <div className="flex justify-center -mt-10">
-        <div className="ribbon ribbon-orange mb-3">
+      <div className="flex justify-center">
+        <div className="ribbon ribbon-orange">
           <div className="content">Cajero Automático</div>
         </div>
       </div>
 
       <VideoPlayerCard
         src={introVideo}
-        nextRoute="/modules/9-cajero-automatico/questions"
+        nextRoute="/modulos/cajero-automatico/inicio"
         showControls={true}
       />
     </div>
