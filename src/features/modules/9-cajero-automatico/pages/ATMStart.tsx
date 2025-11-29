@@ -2,6 +2,7 @@ import { ATM } from "../components/atm/ATM";
 
 const config = {
   title: "Selecciona tu transacción",
+
   left: [
     {
       number: 3,

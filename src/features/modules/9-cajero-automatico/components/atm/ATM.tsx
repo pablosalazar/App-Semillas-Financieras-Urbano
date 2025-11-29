@@ -3,6 +3,7 @@ import btnLeftATM from "../../assets/images/btn-left-atm.png";
 import fmmHeader from "../../assets/images/fmm-header.png";
 import "./ATM.css";
 import { Link } from "react-router";
+import type { ReactNode } from "react";
 
 interface ATMConfig {
   title?: string;
@@ -16,6 +17,7 @@ interface ATMConfig {
     label: string;
     href: string | null;
   }[];
+  screen?: ReactNode;
 }
 
 interface ATMProps {
@@ -69,6 +71,10 @@ export function ATM({ config }: ATMProps) {
             <img src={fmmHeader} alt="FMM Header" className="atm__logo" />
             {config.title && <h2 className="atm__title">{config.title}</h2>}
           </div>
+
+          {config.screen && (
+            <div className="atm__screen-content">{config.screen}</div>
+          )}
 
           <div className="atm__menu">
             <div className="atm__menu-column atm__menu-column--left">

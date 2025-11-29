@@ -1,5 +1,5 @@
 import { VideoPlayerCard } from "@/shared/components/VideoPlayerCard";
-import introVideo from "@/assets/videos/9-cajero-automático/Interfaz_Cajero_Tutorial.m4v";
+import introVideo from "../assets/videos/intro.m4v";
 
 export default function IntroPage() {
   return (

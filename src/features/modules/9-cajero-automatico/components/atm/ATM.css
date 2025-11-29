@@ -53,6 +53,12 @@
   margin-bottom: 15px;
 }
 
+.atm__screen-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .atm__title {
   color: white;
