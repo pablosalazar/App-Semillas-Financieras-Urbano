@@ -1,9 +1,10 @@
 import btnRightATM from "../../assets/images/btn-right-atm.png";
 import btnLeftATM from "../../assets/images/btn-left-atm.png";
 import fmmHeader from "../../assets/images/fmm-header.png";
-import "./ATM.css";
+import pressButtonSound from "../../assets/audio/press-button.mp3";
 import { Link } from "react-router";
 import type { ReactNode } from "react";
+import "./ATM.css";
 
 interface ATMConfig {
   title?: string;
@@ -25,6 +26,13 @@ interface ATMProps {
 }
 
 const NUM_BUTTONS_PER_COL = 4;
+
+const playSound = () => {
+  const audio = new Audio(pressButtonSound);
+  audio.play().catch((error) => {
+    console.error("Error playing sound:", error);
+  });
+};
 
 export function ATM({ config }: ATMProps) {
   return (
@@ -54,7 +62,12 @@ export function ATM({ config }: ATMProps) {
                 }
 
                 return (
-                  <Link to={option.href} key={index} className="atm__button">
+                  <Link
+                    to={option.href}
+                    key={index}
+                    className="atm__button"
+                    onClick={playSound}
+                  >
                     <img
                       src={btnLeftATM}
                       alt={`Left button ${index + 1}`}
@@ -90,7 +103,12 @@ export function ATM({ config }: ATMProps) {
                   }
 
                   return (
-                    <div key={index} className="atm__menu-option">
+                    <div
+                      key={index}
+                      className={`atm__menu-option ${
+                        !option.href ? "opacity-40" : ""
+                      }`}
+                    >
                       {option.label}
                     </div>
                   );
@@ -109,7 +127,12 @@ export function ATM({ config }: ATMProps) {
                   }
 
                   return (
-                    <div key={index} className="atm__menu-option">
+                    <div
+                      key={index}
+                      className={`atm__menu-option ${
+                        !option.href ? "opacity-40" : ""
+                      }`}
+                    >
                       {option.label}
                     </div>
                   );
@@ -140,7 +163,12 @@ export function ATM({ config }: ATMProps) {
                 }
 
                 return (
-                  <Link to={option.href} key={index} className="atm__button">
+                  <Link
+                    to={option.href}
+                    key={index}
+                    className="atm__button"
+                    onClick={playSound}
+                  >
                     <img
                       src={btnRightATM}
                       alt={`Right button ${index + 1}`}

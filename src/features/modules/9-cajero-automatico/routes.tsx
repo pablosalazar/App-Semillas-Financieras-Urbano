@@ -1,6 +1,8 @@
 import type { ModuleRoutes } from "../types";
 import { lazy } from "react";
 import { ATMProvider } from "./context/ATMContext";
+import SelectAmount from "./pages/SelectAmount";
+import EnterYourKey from "./pages/EnterYourKey";
 
 const IntroPage = lazy(() => import("./pages/IntroPage"));
 const ATMStart = lazy(() => import("./pages/ATMStart"));
@@ -33,6 +35,14 @@ export const cajeroAutomaticoRoutes: ModuleRoutes = {
         {
           path: "elige-transaccion",
           element: <ChooseTransaction />,
+        },
+        {
+          path: "ingresa-tu-clave",
+          element: <EnterYourKey />,
+        },
+        {
+          path: "elige-cantidad",
+          element: <SelectAmount />,
         },
       ],
     },
