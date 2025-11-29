@@ -2,7 +2,6 @@ import { ATM } from "../components/atm/ATM";
 import { useState } from "react";
 import insertCardVideo from "../assets/videos/insertar_tarjeta.mp4";
 import { VideoPlayer } from "@/shared/components/VideoPlayer";
-import { VideoPlayerCard } from "@/shared/components/VideoPlayerCard";
 
 export default function InsertCard() {
   const [showVideo, setShowVideo] = useState(false);
@@ -21,9 +20,9 @@ export default function InsertCard() {
   return (
     <>
       {showVideo ? (
-        <VideoPlayerCard
+        <VideoPlayer
           src={insertCardVideo}
-          nextRoute="/nuevo"
+          nextRoute="/modulos/cajero-automatico/no-retires-tu-tarjeta"
           autoRedirect={true}
         />
       ) : (
