@@ -1,18 +1,34 @@
-import { Link } from "react-router";
 import { ATM } from "../components/atm/ATM";
+import { useState } from "react";
 import insertCardVideo from "../assets/videos/insertar_tarjeta.mp4";
-
-const config = {
-  title: "Inserta tu tarjeta",
-  left: [],
-  right: [],
-  screen: (
-    <Link to="/" className="btn btn-orange">
-      Click aquí para <br /> insertar tu tarjeta
-    </Link>
-  ),
-};
+import { VideoPlayer } from "@/shared/components/VideoPlayer";
+import { VideoPlayerCard } from "@/shared/components/VideoPlayerCard";
 
 export default function InsertCard() {
-  return <ATM config={config} />;
+  const [showVideo, setShowVideo] = useState(false);
+
+  const config = {
+    title: "Inserta tu tarjeta",
+    left: [],
+    right: [],
+    screen: (
+      <button onClick={() => setShowVideo(true)} className="btn btn-orange">
+        Click aquí para <br /> insertar tu tarjeta
+      </button>
+    ),
+  };
+
+  return (
+    <>
+      {showVideo ? (
+        <VideoPlayerCard
+          src={insertCardVideo}
+          nextRoute="/nuevo"
+          autoRedirect={true}
+        />
+      ) : (
+        <ATM config={config} />
+      )}
+    </>
+  );
 }
