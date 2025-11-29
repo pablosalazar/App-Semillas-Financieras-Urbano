@@ -1,9 +1,11 @@
-import btnRightATM from "../assets/images/btn-right-atm.png";
-import btnLeftATM from "../assets/images/btn-left-atm.png";
-import fmmHeader from "../assets/images/fmm-header.png";
-import "../styles.css";
+import btnRightATM from "../../assets/images/btn-right-atm.png";
+import btnLeftATM from "../../assets/images/btn-left-atm.png";
+import fmmHeader from "../../assets/images/fmm-header.png";
+import "./ATM.css";
+import { Link } from "react-router";
 
 interface ATMConfig {
+  title?: string;
   left: {
     number: number;
     label: string;
@@ -32,22 +34,40 @@ export function ATM({ config }: ATMProps) {
           <div className="atm__buttons">
             {Array(NUM_BUTTONS_PER_COL)
               .fill(0)
-              .map((_, index) => (
-                <button key={index} className="atm__button">
-                  <img
-                    src={btnLeftATM}
-                    alt={`Left button ${index + 1}`}
-                    className="atm__button-img"
-                  />
-                </button>
-              ))}
+              .map((_, index) => {
+                const option = config.left.find(
+                  (option) => option.number === index + 1
+                );
+
+                if (!option || !option.href) {
+                  return (
+                    <button key={index} className="atm__button">
+                      <img
+                        src={btnLeftATM}
+                        alt={`Left button ${index + 1}`}
+                        className="atm__button-img"
+                      />
+                    </button>
+                  );
+                }
+
+                return (
+                  <Link to={option.href} key={index} className="atm__button">
+                    <img
+                      src={btnLeftATM}
+                      alt={`Left button ${index + 1}`}
+                      className="atm__button-img"
+                    />
+                  </Link>
+                );
+              })}
           </div>
         </div>
 
         <div className="atm__screen">
           <div className="atm__screen-header">
             <img src={fmmHeader} alt="FMM Header" className="atm__logo" />
-            <h2 className="atm__title">Selecciona tu transacción</h2>
+            {config.title && <h2 className="atm__title">{config.title}</h2>}
           </div>
 
           <div className="atm__menu">
@@ -96,15 +116,33 @@ export function ATM({ config }: ATMProps) {
           <div className="atm__buttons">
             {Array(NUM_BUTTONS_PER_COL)
               .fill(0)
-              .map((option, index) => (
-                <button key={option.id} className="atm__button">
-                  <img
-                    src={btnRightATM}
-                    alt={`Right button ${index + 1}`}
-                    className="atm__button-img"
-                  />
-                </button>
-              ))}
+              .map((_, index) => {
+                const option = config.right.find(
+                  (option) => option.number === index + 1
+                );
+
+                if (!option || !option.href) {
+                  return (
+                    <button key={index} className="atm__button">
+                      <img
+                        src={btnRightATM}
+                        alt={`Right button ${index + 1}`}
+                        className="atm__button-img"
+                      />
+                    </button>
+                  );
+                }
+
+                return (
+                  <Link to={option.href} key={index} className="atm__button">
+                    <img
+                      src={btnRightATM}
+                      alt={`Right button ${index + 1}`}
+                      className="atm__button-img"
+                    />
+                  </Link>
+                );
+              })}
           </div>
         </div>
       </div>

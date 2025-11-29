@@ -1,16 +1,17 @@
-import { ATM } from "../components/ATM";
+import { ATM } from "../components/atm/ATM";
 
 const config = {
+  title: "Selecciona tu transacción",
   left: [
     {
       number: 3,
       label: "Consulta saldo",
-      href: null,
+      href: "/modulos/cajero-automatico/insertar-tarjeta",
     },
     {
       number: 4,
       label: "Depósito en efectivo",
-      href: null,
+      href: "/modulos/cajero-automatico/insertar-tarjeta",
     },
   ],
   right: [],
