@@ -1,4 +1,5 @@
 import { useState } from "react";
+import pressButtonSound from "../../assets/audio/press-button.mp3";
 import "./KeyPad.css";
 
 interface KeyPadProps {
@@ -7,10 +8,18 @@ interface KeyPadProps {
   maxLength?: number;
 }
 
+const playSound = () => {
+  const audio = new Audio(pressButtonSound);
+  audio.play().catch((error) => {
+    console.error("Error playing sound:", error);
+  });
+};
+
 export function KeyPad({ onComplete, onCancel, maxLength = 4 }: KeyPadProps) {
   const [pin, setPin] = useState("");
 
   const handleNumberClick = (num: string) => {
+    playSound();
     if (pin.length < maxLength) {
       const newPin = pin + num;
       setPin(newPin);
@@ -18,6 +27,7 @@ export function KeyPad({ onComplete, onCancel, maxLength = 4 }: KeyPadProps) {
   };
 
   const handleCancel = () => {
+    playSound();
     setPin("");
     if (onCancel) {
       onCancel();
@@ -25,11 +35,13 @@ export function KeyPad({ onComplete, onCancel, maxLength = 4 }: KeyPadProps) {
   };
 
   const handleCorrect = () => {
+    playSound();
     setPin(pin.slice(0, -1));
   };
 
   const handleContinue = () => {
     if (pin.length === maxLength) {
+      playSound();
       onComplete(pin);
     }
   };

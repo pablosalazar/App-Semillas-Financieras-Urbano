@@ -157,8 +157,3 @@
 .keypad__action--continue:active:not(:disabled) {
   background: linear-gradient(180deg, #38a169 0%, #2f855a 100%);
 }
-
-.keypad__action--continue:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
