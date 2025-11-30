@@ -53,7 +53,10 @@ export function ATM({ config }: ATMProps) {
 
                 if (!option || (!option.href && !option.onClick)) {
                   return (
-                    <button key={index} className="atm__button">
+                    <button
+                      key={index}
+                      className="atm__button atm__button--disabled"
+                    >
                       <img
                         src={btnLeftATM}
                         alt={`Left button ${index + 1}`}
@@ -175,7 +178,10 @@ export function ATM({ config }: ATMProps) {
 
                 if (!option || (!option.href && !option.onClick)) {
                   return (
-                    <button key={index} className="atm__button">
+                    <button
+                      key={index}
+                      className="atm__button atm__button--disabled"
+                    >
                       <img
                         src={btnRightATM}
                         alt={`Right button ${index + 1}`}
