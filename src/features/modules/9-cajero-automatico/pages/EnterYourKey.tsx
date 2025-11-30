@@ -8,8 +8,15 @@ export default function EnterYourKey() {
 
   const handlePinComplete = (pin: string) => {
     console.log("PIN entered:", pin);
-    // Navigate to the next step after PIN is entered
-    navigate(`${ATM_BASE_PATH}/${ATM_ROUTES.SELECT_AMOUNT}`);
+
+    // Check if PIN is correct
+    if (pin === "1234") {
+      // Navigate to the next step after PIN is entered
+      navigate(`${ATM_BASE_PATH}/${ATM_ROUTES.SELECT_AMOUNT}`);
+    } else {
+      // Navigate to wrong password page
+      navigate(`${ATM_BASE_PATH}/${ATM_ROUTES.WRONG_PASSWORD}`);
+    }
   };
 
   const config = {

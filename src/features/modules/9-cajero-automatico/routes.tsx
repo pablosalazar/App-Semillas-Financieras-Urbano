@@ -11,6 +11,7 @@ const ChooseTransaction = lazy(() => import("./pages/ChooseTransaction"));
 const SelectAmount = lazy(() => import("./pages/SelectAmount"));
 const CheckCost = lazy(() => import("./pages/CheckCost"));
 const EnterYourKey = lazy(() => import("./pages/EnterYourKey"));
+const WrongPassword = lazy(() => import("./pages/WrongPassword"));
 const WithdrawMoney = lazy(() => import("./pages/WithdrawMoney"));
 const ScreenOrReceipt = lazy(() => import("./pages/ScreenOrReceipt"));
 const PrintReceipt = lazy(() => import("./pages/PrintReceipt"));
@@ -54,6 +55,10 @@ export const cajeroAutomaticoRoutes: ModuleRoutes = {
         {
           path: ATM_ROUTES.ENTER_PIN,
           element: <EnterYourKey />,
+        },
+        {
+          path: ATM_ROUTES.WRONG_PASSWORD,
+          element: <WrongPassword />,
         },
         {
           path: ATM_ROUTES.WITHDRAW_MONEY,

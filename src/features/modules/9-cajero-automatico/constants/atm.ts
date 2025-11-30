@@ -14,6 +14,7 @@ export const ATM_ROUTES = {
   SELECT_AMOUNT: "seleccionar-cantidad",
   CHECK_COST: "consultar-costo",
   ENTER_PIN: "ingresar-clave",
+  WRONG_PASSWORD: "clave-incorrecta",
   WITHDRAW_MONEY: "retirar-dinero",
   SCREEN_OR_RECEIPT: "imprimir-recibo-o-ver-en-pantalla",
   PRINT_RECEIPT: "imprimir-recibo",
