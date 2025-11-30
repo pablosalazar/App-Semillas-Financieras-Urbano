@@ -1,14 +1,21 @@
 import type { ModuleRoutes } from "../types";
 import { lazy } from "react";
 import { ATMProvider } from "./context/ATMContext";
-import SelectAmount from "./pages/SelectAmount";
-import EnterYourKey from "./pages/EnterYourKey";
+import { ATM_ROUTES } from "./constants/atm";
 
 const IntroPage = lazy(() => import("./pages/IntroPage"));
 const ATMStart = lazy(() => import("./pages/ATMStart"));
 const InsertCard = lazy(() => import("./pages/InsertCard"));
 const DontRemoveYourCard = lazy(() => import("./pages/DontRemoveYourCard"));
 const ChooseTransaction = lazy(() => import("./pages/ChooseTransaction"));
+const SelectAmount = lazy(() => import("./pages/SelectAmount"));
+const CheckCost = lazy(() => import("./pages/CheckCost"));
+const EnterYourKey = lazy(() => import("./pages/EnterYourKey"));
+const WithdrawMoney = lazy(() => import("./pages/WithdrawMoney"));
+const ScreenOrReceipt = lazy(() => import("./pages/ScreenOrReceipt"));
+const PrintReceipt = lazy(() => import("./pages/PrintReceipt"));
+const CheckBalance = lazy(() => import("./pages/CheckBalance"));
+const Final = lazy(() => import("./pages/Final"));
 
 export const cajeroAutomaticoRoutes: ModuleRoutes = {
   basePath: "cajero-automatico",
@@ -17,32 +24,56 @@ export const cajeroAutomaticoRoutes: ModuleRoutes = {
       element: <ATMProvider />,
       children: [
         {
-          path: "",
+          path: ATM_ROUTES.INTRO,
           element: <IntroPage />,
         },
         {
-          path: "inicio",
+          path: ATM_ROUTES.START,
           element: <ATMStart />,
         },
         {
-          path: "insertar-tarjeta",
+          path: ATM_ROUTES.INSERT_CARD,
           element: <InsertCard />,
         },
         {
-          path: "no-retires-tu-tarjeta",
+          path: ATM_ROUTES.DONT_REMOVE_CARD,
           element: <DontRemoveYourCard />,
         },
         {
-          path: "elige-transaccion",
+          path: ATM_ROUTES.CHOOSE_OPERATION,
           element: <ChooseTransaction />,
         },
         {
-          path: "ingresa-tu-clave",
+          path: ATM_ROUTES.SELECT_AMOUNT,
+          element: <SelectAmount />,
+        },
+        {
+          path: ATM_ROUTES.CHECK_COST,
+          element: <CheckCost />,
+        },
+        {
+          path: ATM_ROUTES.ENTER_PIN,
           element: <EnterYourKey />,
         },
         {
-          path: "elige-cantidad",
-          element: <SelectAmount />,
+          path: ATM_ROUTES.WITHDRAW_MONEY,
+          element: <WithdrawMoney />,
+        },
+        {
+          path: ATM_ROUTES.SCREEN_OR_RECEIPT,
+          element: <ScreenOrReceipt />,
+        },
+        {
+          path: ATM_ROUTES.PRINT_RECEIPT,
+          element: <PrintReceipt />,
+        },
+        {
+          path: ATM_ROUTES.CHECK_BALANCE,
+          element: <CheckBalance />,
+        },
+        {
+          path: ATM_ROUTES.FINAL,
+          element: <Final />,
         },
       ],
     },

@@ -1,3 +1,3 @@
 export default function EnterYourKey() {
-  return <div>EnterYourKey</div>;
+  return <div>Ingresar Clave</div>;
 }

@@ -1,5 +1,5 @@
 import { ATM } from "../components/atm/ATM";
-import { ATM_OPERATIONS } from "../constants/atm";
+import { ATM_BASE_PATH, ATM_OPERATIONS, ATM_ROUTES } from "../constants/atm";
 import { useATM } from "../context/ATMContext";
 import { useNavigate } from "react-router";
 
@@ -16,7 +16,7 @@ export default function ATMStart() {
         label: "Consulta saldo",
         onClick: () => {
           setOperationType(ATM_OPERATIONS.CHECK_BALANCE);
-          navigate("/modulos/cajero-automatico/insertar-tarjeta");
+          navigate(`${ATM_BASE_PATH}/${ATM_ROUTES.INSERT_CARD}`);
         },
       },
       {
@@ -24,7 +24,7 @@ export default function ATMStart() {
         label: "Retirar dinero",
         onClick: () => {
           setOperationType(ATM_OPERATIONS.WITHDRAW_MONEY);
-          navigate("/modulos/cajero-automatico/insertar-tarjeta");
+          navigate(`${ATM_BASE_PATH}/${ATM_ROUTES.INSERT_CARD}`);
         },
       },
     ],
