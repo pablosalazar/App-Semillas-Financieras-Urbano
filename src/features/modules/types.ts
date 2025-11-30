@@ -1,4 +1,5 @@
 import type { RouteObject } from "react-router";
+import type { ATM_OPERATIONS } from "./9-cajero-automatico/constants/atm";
 
 /**
  * Module route configuration
@@ -10,7 +11,7 @@ export interface ModuleRoutes {
    * This will be used to create the full path: /modules/{basePath}
    */
   basePath: string;
-  
+
   /**
    * The routes for this module
    * These routes will be automatically prefixed with /modules/{basePath}
@@ -18,3 +19,5 @@ export interface ModuleRoutes {
   routes: RouteObject[];
 }
 
+export type ATMOperationType =
+  (typeof ATM_OPERATIONS)[keyof typeof ATM_OPERATIONS];

@@ -1,15 +1,16 @@
 import { createContext, useContext, useState } from "react";
 import { Outlet } from "react-router";
+import type { ATMOperationType } from "../../types";
 
 interface ATMContextType {
-  operationType: string;
-  setOperationType: (type: string) => void;
+  operationType?: ATMOperationType;
+  setOperationType: (type: ATMOperationType) => void;
 }
 
 const ATMContext = createContext<ATMContextType | undefined>(undefined);
 
 export function ATMProvider() {
-  const [operationType, setOperationType] = useState<string>("");
+  const [operationType, setOperationType] = useState<ATMOperationType>();
 
   return (
     <ATMContext.Provider value={{ operationType, setOperationType }}>

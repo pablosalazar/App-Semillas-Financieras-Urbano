@@ -11,12 +11,14 @@ interface ATMConfig {
   left: {
     number: number;
     label: string;
-    href: string | null;
+    href?: string | null;
+    onClick?: () => void;
   }[];
   right: {
     number: number;
     label: string;
-    href: string | null;
+    href?: string | null;
+    onClick?: () => void;
   }[];
   screen?: ReactNode;
 }
@@ -49,7 +51,7 @@ export function ATM({ config }: ATMProps) {
                   (option) => option.number === index + 1
                 );
 
-                if (!option || !option.href) {
+                if (!option || (!option.href && !option.onClick)) {
                   return (
                     <button key={index} className="atm__button">
                       <img
@@ -61,9 +63,30 @@ export function ATM({ config }: ATMProps) {
                   );
                 }
 
+                // If onClick is provided, use a button instead of Link
+                if (option.onClick) {
+                  return (
+                    <button
+                      key={index}
+                      className="atm__button"
+                      onClick={() => {
+                        playSound();
+                        option.onClick?.();
+                      }}
+                    >
+                      <img
+                        src={btnLeftATM}
+                        alt={`Left button ${index + 1}`}
+                        className="atm__button-img"
+                      />
+                    </button>
+                  );
+                }
+
+                // Otherwise use Link for navigation
                 return (
                   <Link
-                    to={option.href}
+                    to={option.href!}
                     key={index}
                     className="atm__button"
                     onClick={playSound}
@@ -106,7 +129,7 @@ export function ATM({ config }: ATMProps) {
                     <div
                       key={index}
                       className={`atm__menu-option ${
-                        !option.href ? "opacity-40" : ""
+                        !option.href && !option.onClick ? "opacity-40" : ""
                       }`}
                     >
                       {option.label}
@@ -130,7 +153,7 @@ export function ATM({ config }: ATMProps) {
                     <div
                       key={index}
                       className={`atm__menu-option ${
-                        !option.href ? "opacity-40" : ""
+                        !option.href && !option.onClick ? "opacity-40" : ""
                       }`}
                     >
                       {option.label}
@@ -150,7 +173,7 @@ export function ATM({ config }: ATMProps) {
                   (option) => option.number === index + 1
                 );
 
-                if (!option || !option.href) {
+                if (!option || (!option.href && !option.onClick)) {
                   return (
                     <button key={index} className="atm__button">
                       <img
@@ -162,9 +185,30 @@ export function ATM({ config }: ATMProps) {
                   );
                 }
 
+                // If onClick is provided, use a button instead of Link
+                if (option.onClick) {
+                  return (
+                    <button
+                      key={index}
+                      className="atm__button"
+                      onClick={() => {
+                        playSound();
+                        option.onClick?.();
+                      }}
+                    >
+                      <img
+                        src={btnRightATM}
+                        alt={`Right button ${index + 1}`}
+                        className="atm__button-img"
+                      />
+                    </button>
+                  );
+                }
+
+                // Otherwise use Link for navigation
                 return (
                   <Link
-                    to={option.href}
+                    to={option.href!}
                     key={index}
                     className="atm__button"
                     onClick={playSound}
