@@ -2,7 +2,7 @@ import { ATM } from "../components/atm/ATM";
 import { useState } from "react";
 import insertCardVideo from "../assets/videos/insertar_tarjeta.mp4";
 import { VideoPlayer } from "@/shared/components/VideoPlayer";
-import { ATM_BASE_PATH, ATM_OPERATIONS, ATM_ROUTES } from "../constants/atm";
+import { ATM_BASE_PATH, ATM_ROUTES } from "../constants/atm";
 
 export default function InsertCard() {
   const [showVideo, setShowVideo] = useState(false);

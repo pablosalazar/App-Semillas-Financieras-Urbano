@@ -43,7 +43,7 @@ export default function ChooseTransaction() {
         label: "Saldo cuenta de ahorro",
         href:
           operationType === ATM_OPERATIONS.CHECK_BALANCE
-            ? `${ATM_BASE_PATH}/${ATM_ROUTES.CHECK_BALANCE}`
+            ? `${ATM_BASE_PATH}/${ATM_ROUTES.ENTER_PIN}`
             : null,
       },
       {
