@@ -1,23 +1,13 @@
-import { ATM } from "../components/atm/ATM";
+import { VideoPlayer } from "@/shared/components/VideoPlayer";
+import printReceiptVideo from "../assets/videos/retirar_recibo.mp4";
+import { ATM_BASE_PATH, ATM_ROUTES } from "../constants/atm";
 
 export default function PrintReceipt() {
-  const config = {
-    title: "Imprimir recibo",
-
-    left: [
-      {
-        number: 3,
-        label: "Consulta saldo",
-        href: null,
-      },
-      {
-        number: 4,
-        label: "Retirar dinero",
-        href: null,
-      },
-    ],
-    right: [],
-  };
-
-  return <ATM config={config} />;
+  return (
+    <VideoPlayer
+      src={printReceiptVideo}
+      nextRoute={`${ATM_BASE_PATH}/${ATM_ROUTES.FINAL}`}
+      autoRedirect={true}
+    />
+  );
 }

@@ -12,7 +12,7 @@ export default function EnterYourKey() {
     // Check if PIN is correct
     if (pin === "1234") {
       // Navigate to the next step after PIN is entered
-      navigate(`${ATM_BASE_PATH}/${ATM_ROUTES.SELECT_AMOUNT}`);
+      navigate(`${ATM_BASE_PATH}/${ATM_ROUTES.SCREEN_OR_RECEIPT}`);
     } else {
       // Navigate to wrong password page
       navigate(`${ATM_BASE_PATH}/${ATM_ROUTES.WRONG_PASSWORD}`);

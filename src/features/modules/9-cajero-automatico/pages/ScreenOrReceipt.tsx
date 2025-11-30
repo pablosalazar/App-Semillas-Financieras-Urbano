@@ -1,4 +1,5 @@
 import { ATM } from "../components/atm/ATM";
+import { ATM_BASE_PATH, ATM_ROUTES } from "../constants/atm";
 
 export default function ScreenOrReceipt() {
   const config = {
@@ -8,14 +9,14 @@ export default function ScreenOrReceipt() {
       {
         number: 4,
         label: "Imprimir recibo",
-        href: null,
+        href: `${ATM_BASE_PATH}/${ATM_ROUTES.PRINT_RECEIPT}`,
       },
     ],
     right: [
       {
         number: 4,
         label: "Ver en pantalla",
-        href: null,
+        href: `${ATM_BASE_PATH}/${ATM_ROUTES.CHECK_BALANCE}`,
       },
     ],
   };
