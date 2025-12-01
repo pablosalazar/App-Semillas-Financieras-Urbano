@@ -18,7 +18,7 @@ export default function ChooseTransaction() {
         label: "Retiro cuenta de ahorro",
         href:
           operationType === ATM_OPERATIONS.WITHDRAW_MONEY
-            ? `${ATM_BASE_PATH}/${ATM_ROUTES.ENTER_PIN}`
+            ? `${ATM_BASE_PATH}/${ATM_ROUTES.SELECT_AMOUNT}`
             : null,
       },
       {

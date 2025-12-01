@@ -132,7 +132,7 @@ export function ATM({ config }: ATMProps) {
                     <div
                       key={index}
                       className={`atm__menu-option ${
-                        !option.href && !option.onClick ? "opacity-40" : ""
+                        !option.href && !option.onClick ? "opacity-70" : ""
                       }`}
                     >
                       {option.label}
@@ -156,7 +156,7 @@ export function ATM({ config }: ATMProps) {
                     <div
                       key={index}
                       className={`atm__menu-option ${
-                        !option.href && !option.onClick ? "opacity-40" : ""
+                        !option.href && !option.onClick ? "opacity-70" : ""
                       }`}
                     >
                       {option.label}
