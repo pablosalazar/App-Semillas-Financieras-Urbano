@@ -22,14 +22,13 @@ export default function IntroPage() {
 
           <div className="space-y-4">
             <p className="text-xl sm:text-2xl ">
-              A la aplicación de la{" "}
-              <span className="font-bold">Fundación Mundo Mujer.</span>
+              A la aplicación de{" "}
+              <span className="font-bold">Semillas Financieras.</span>
             </p>
 
             <div className="bg-orange-50 rounded-2xl p-6 border-2 border-orange-200">
               <p className="text-lg sm:text-xl leading-relaxed ">
-                Antes de iniciar, realizaremos una pequeña evaluación de tus
-                conocimientos previos en educación financiera
+                Antes de iniciar, cuéntenos qué conoce de educación financiera.
               </p>
             </div>
           </div>

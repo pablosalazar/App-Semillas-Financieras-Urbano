@@ -31,3 +31,5 @@ ios/
 *.orig
 *.jks
 *.keystore
+
+*.zip

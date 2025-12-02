@@ -2,6 +2,8 @@ import { useState } from "react";
 import { QuizQuestion } from "../components/QuizQuestion";
 import { EVALUATION_INITIAL_QUESTIONS } from "../constants/questions";
 import { ProgressBar } from "@/shared/components/ProgressBar";
+import { Link } from "react-router";
+import { ChevronRight } from "lucide-react";
 
 export default function QuestionsPages() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -88,9 +90,24 @@ export default function QuestionsPages() {
               ¡Evaluación Completada! 🎉
             </h3>
             <div className="text-8xl font-bold mb-4">{score.percentage}%</div>
-            <p className="text-2xl mb-8">
+            <p className="text-2xl mb-3">
               {score.correct} de {score.total} respuestas correctas
             </p>
+            {score.percentage >= 80 && (
+              <p className="bg-green-50 text-green-700 italic font-semibold p-6 rounded-2xl mb-6 text-2xl border-2 border-green-700">
+                Usted ya sabe las bases de la educación finaciera, siga
+                aprendiendo para enriquecer su conocimiento.
+              </p>
+            )}
+            {score.percentage < 80 && (
+              <p className="bg-white italic text-amber-500 font-medium p-6 rounded-2xl mb-6 text-2xl border-2 border-amber-500">
+                Recuerda que solo queremos saber tus conocimiento previos, juega
+                con nosotros para mejorar su conocimiento.
+              </p>
+            )}
+            <Link to={"/"} className="btn btn-orange">
+              Avanzar <ChevronRight />
+            </Link>
           </div>
         </div>
       )}
