@@ -1,3 +1,21 @@
+import { VideoPlayerCard } from "@/shared/components/VideoPlayerCard";
+import introVideo from "../assets/videos/intro.mp4";
+
 export default function Intro() {
-  return <div>Intro</div>;
+  return (
+    <div className="flex flex-col min-h-screen px-4">
+      {/* Header with Ribbon */}
+      <div className="flex justify-center">
+        <div className="ribbon ribbon-orange">
+          <div className="content">Tentaciones</div>
+        </div>
+      </div>
+
+      <VideoPlayerCard
+        src={introVideo}
+        nextRoute="/modulos/tentaciones"
+        showControls={true}
+      />
+    </div>
+  );
 }
