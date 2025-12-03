@@ -1,23 +1,32 @@
 import type { ModuleRoutes } from "./types";
 import { evaluacionInicialRoutes } from "./0-evaluacion-inicial/routes";
+import { saludEconomicaRoutes } from "./1-salud-economica/routes";
+import { yoLlevoMisCuentasRoutes } from "./2-yo-llevo-mis-cuentas/routes";
+import { yoAhorroRoutes } from "./3-yo-ahorro/routes";
+import { deudasSanasRoutes } from "./4-deudas-sanas/routes";
+import { tentacionesRoutes } from "./5-tentaciones/routes";
+import { yoMeAseguroRoutes } from "./6-yo-me-aseguro/routes";
+import { serviciosFinancierosRoutes } from "./7-servicios-financieros/routes";
+import { trabajoEnComunidadRoutes } from "./8-trabajo-en-comunidad/routes";
 import { cajeroAutomaticoRoutes } from "./9-cajero-automatico/routes";
+import { recomendacionesDeSeguridadRoutes } from "./10-recomendaciones-de-seguridad/routes";
+import { miAprendizajeRoutes } from "./11-mi-aprendizaje/routes";
 
-/**
- * Registry of all module routes
- * To add a new module:
- * 1. Create the module folder with its routes.tsx file
- * 2. Import the module routes here
- * 3. Add it to the modules array
- */
 export const modules: ModuleRoutes[] = [
   evaluacionInicialRoutes,
+  saludEconomicaRoutes,
+  yoLlevoMisCuentasRoutes,
+  yoAhorroRoutes,
+  deudasSanasRoutes,
+  tentacionesRoutes,
+  yoMeAseguroRoutes,
+  serviciosFinancierosRoutes,
+  trabajoEnComunidadRoutes,
   cajeroAutomaticoRoutes,
+  recomendacionesDeSeguridadRoutes,
+  miAprendizajeRoutes,
 ];
 
-/**
- * Helper function to transform module routes into React Router RouteObject format
- * This prefixes all module routes with /modules/{basePath}
- */
 export function getModuleRoutes(): import("react-router").RouteObject[] {
   return modules.map((module) => ({
     path: `/modulos/${module.basePath}`,

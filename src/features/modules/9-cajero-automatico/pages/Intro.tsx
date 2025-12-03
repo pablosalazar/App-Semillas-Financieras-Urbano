@@ -1,7 +1,7 @@
 import { VideoPlayerCard } from "@/shared/components/VideoPlayerCard";
 import introVideo from "../assets/videos/intro.m4v";
 
-export default function IntroPage() {
+export default function Intro() {
   return (
     <div className="flex flex-col min-h-screen px-4">
       {/* Header with Ribbon */}

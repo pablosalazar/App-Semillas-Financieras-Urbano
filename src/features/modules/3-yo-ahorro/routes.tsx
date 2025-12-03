@@ -3,8 +3,8 @@ import { lazy } from "react";
 
 const Intro = lazy(() => import("./pages/Intro"));
 
-export const saludEconomicaRoutes: ModuleRoutes = {
-  basePath: "salud-economica",
+export const yoAhorroRoutes: ModuleRoutes = {
+  basePath: "yo-ahorro",
   routes: [
     {
       path: "",
@@ -12,3 +12,4 @@ export const saludEconomicaRoutes: ModuleRoutes = {
     },
   ],
 };
+

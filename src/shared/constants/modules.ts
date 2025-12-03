@@ -1,4 +1,3 @@
-// Import all module images
 import saludEconomicaImg from "@/assets/images/modules/salud-economica.png";
 import yoLlevoMisCuentasImg from "@/assets/images/modules/yo-llevo-mis-cuentas.png";
 import yoAhorroImg from "@/assets/images/modules/yo-ahorro.png";
@@ -15,7 +14,7 @@ export const modules = [
   {
     id: 1,
     name: "Salud Económica",
-    path: "/modulos/evaluacion-inicial",
+    path: "/modulos/salud-economica",
     image: saludEconomicaImg,
     completed: false,
   },
@@ -36,7 +35,7 @@ export const modules = [
   {
     id: 4,
     name: "Deudas",
-    path: "/modulos/deudas",
+    path: "/modulos/deudas-sanas",
     image: deudasSanasImg,
     completed: false,
   },

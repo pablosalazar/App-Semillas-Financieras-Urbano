@@ -3,7 +3,7 @@ import { lazy } from "react";
 import { ATMProvider } from "./context/ATMContext";
 import { ATM_ROUTES } from "./constants/atm";
 
-const IntroPage = lazy(() => import("./pages/IntroPage"));
+const Intro = lazy(() => import("./pages/Intro"));
 const ATMStart = lazy(() => import("./pages/ATMStart"));
 const InsertCard = lazy(() => import("./pages/InsertCard"));
 const DontRemoveYourCard = lazy(() => import("./pages/DontRemoveYourCard"));
@@ -26,7 +26,7 @@ export const cajeroAutomaticoRoutes: ModuleRoutes = {
       children: [
         {
           path: ATM_ROUTES.INTRO,
-          element: <IntroPage />,
+          element: <Intro />,
         },
         {
           path: ATM_ROUTES.START,
