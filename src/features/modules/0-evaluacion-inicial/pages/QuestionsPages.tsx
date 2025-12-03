@@ -49,7 +49,7 @@ export default function QuestionsPages() {
     <div className="flex flex-col min-h-screen px-4">
       {/* Header with Ribbon */}
       <div className="flex justify-center">
-        <div className="ribbon ribbon-orange mb-3">
+        <div className="ribbon mb-3">
           <div className="content">Evaluación Inicial</div>
         </div>
       </div>

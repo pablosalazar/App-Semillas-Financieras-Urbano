@@ -24,7 +24,7 @@ export function ModulesSlider() {
   return (
     <div className="relative w-full">
       {/* Slider Container */}
-      <div className="overflow-hidden max-w-4xl mx-auto -mt-40">
+      <div className="overflow-hidden max-w-4xl mx-auto">
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
