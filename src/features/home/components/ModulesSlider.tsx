@@ -6,6 +6,8 @@ import { Link } from "react-router";
 
 export function ModulesSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   // Split modules into slides: first 6, then remaining 5
   const slides = [
@@ -13,12 +15,47 @@ export function ModulesSlider() {
     modules.slice(6), // Slide 2: modules 7-11
   ];
 
+  // Minimum swipe distance (in pixels) to trigger slide change
+  const minSwipeDistance = 50;
+
   const goToNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    if (currentSlide < slides.length - 1) {
+      setCurrentSlide((prev) => prev + 1);
+    }
   };
 
   const goToPrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    if (currentSlide > 0) {
+      setCurrentSlide((prev) => prev - 1);
+    }
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null); // Reset touch end
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      goToNextSlide();
+    }
+    if (isRightSwipe) {
+      goToPrevSlide();
+    }
+
+    // Reset touch positions
+    setTouchStart(null);
+    setTouchEnd(null);
   };
 
   return (
@@ -26,8 +63,11 @@ export function ModulesSlider() {
       {/* Slider Container */}
       <div className="overflow-hidden max-w-4xl mx-auto">
         <div
-          className="flex transition-transform duration-500 ease-in-out"
+          className="flex transition-transform duration-500 ease-in-out touch-pan-y"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           {slides.map((slideModules, slideIndex) => (
             <div

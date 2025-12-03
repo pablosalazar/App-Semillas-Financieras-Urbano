@@ -7,7 +7,7 @@ export default function Intro() {
       {/* Header with Ribbon */}
       <div className="flex justify-center">
         <div className="ribbon">
-          <div className="content">Deudas</div>
+          <div className="content">Deudas Sanas</div>
         </div>
       </div>
 
