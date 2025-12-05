@@ -1,21 +1,15 @@
 import { VideoPlayerCard } from "@/shared/components/VideoPlayerCard";
+import { ModulePageLayout } from "@/shared/components/ModulePageLayout";
 import introVideo from "../assets/videos/intro.mp4";
 
 export default function Intro() {
   return (
-    <div className="flex flex-col min-h-screen px-4">
-      {/* Header with Ribbon */}
-      <div className="flex justify-center">
-        <div className="ribbon">
-          <div className="content">Deudas Sanas</div>
-        </div>
-      </div>
-
+    <ModulePageLayout title="Deudas Sanas">
       <VideoPlayerCard
         src={introVideo}
         nextRoute="/modulos/deudas-sanas/instrucciones"
         showControls={true}
       />
-    </div>
+    </ModulePageLayout>
   );
 }

@@ -1,21 +1,15 @@
 import { VideoPlayerCard } from "@/shared/components/VideoPlayerCard";
+import { ModulePageLayout } from "@/shared/components/ModulePageLayout";
 import instructionsVideo from "../assets/videos/instrucciones.mp4";
 
 export default function Instructions() {
   return (
-    <div className="flex flex-col min-h-screen px-4">
-      {/* Header with Ribbon */}
-      <div className="flex justify-center">
-        <div className="ribbon">
-          <div className="content">Salud Económica</div>
-        </div>
-      </div>
-
+    <ModulePageLayout title="Salud Económica">
       <VideoPlayerCard
         src={instructionsVideo}
         nextRoute="/modulos/salud-economica/instrucciones"
         showControls={true}
       />
-    </div>
+    </ModulePageLayout>
   );
 }

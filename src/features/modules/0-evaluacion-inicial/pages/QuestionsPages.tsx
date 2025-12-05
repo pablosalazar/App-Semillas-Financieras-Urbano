@@ -2,6 +2,7 @@ import { useState } from "react";
 import { QuizQuestion } from "../components/QuizQuestion";
 import { EVALUATION_INITIAL_QUESTIONS } from "../constants/questions";
 import { ProgressBar } from "@/shared/components/ProgressBar";
+import { ModulePageLayout } from "@/shared/components/ModulePageLayout";
 import { Link } from "react-router";
 import { ChevronRight } from "lucide-react";
 
@@ -46,14 +47,7 @@ export default function QuestionsPages() {
   const allQuestionsAnswered = Object.keys(answers).length === totalQuestions;
 
   return (
-    <div className="flex flex-col min-h-screen px-4">
-      {/* Header with Ribbon */}
-      <div className="flex justify-center">
-        <div className="ribbon mb-3">
-          <div className="content">Evaluación Inicial</div>
-        </div>
-      </div>
-
+    <ModulePageLayout title="Evaluación Inicial">
       {!showResults && (
         <>
           {/* Progress Bar */}
@@ -111,6 +105,6 @@ export default function QuestionsPages() {
           </div>
         </div>
       )}
-    </div>
+    </ModulePageLayout>
   );
 }
