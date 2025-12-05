@@ -1,7 +1,7 @@
 import { VideoPlayerCard } from "@/shared/components/VideoPlayerCard";
-import introVideo from "../assets/videos/intro.mp4";
+import instructionsVideo from "../assets/videos/instrucciones.mp4";
 
-export default function Intro() {
+export default function Instructions() {
   return (
     <div className="flex flex-col min-h-screen px-4">
       {/* Header with Ribbon */}
@@ -12,7 +12,7 @@ export default function Intro() {
       </div>
 
       <VideoPlayerCard
-        src={introVideo}
+        src={instructionsVideo}
         nextRoute="/modulos/servicios-financieros/instrucciones"
         showControls={true}
       />

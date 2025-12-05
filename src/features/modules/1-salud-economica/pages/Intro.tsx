@@ -13,7 +13,7 @@ export default function Intro() {
 
       <VideoPlayerCard
         src={introVideo}
-        nextRoute="/modulos/salud-economica"
+        nextRoute="/modulos/salud-economica/instrucciones"
         showControls={true}
       />
     </div>

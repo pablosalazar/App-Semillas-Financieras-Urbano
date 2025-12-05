@@ -2,6 +2,7 @@ import type { ModuleRoutes } from "../types";
 import { lazy } from "react";
 
 const Intro = lazy(() => import("./pages/Intro"));
+const Instructions = lazy(() => import("./pages/Instructions"));
 
 export const yoMeAseguroRoutes: ModuleRoutes = {
   basePath: "yo-me-aseguro",
@@ -10,6 +11,9 @@ export const yoMeAseguroRoutes: ModuleRoutes = {
       path: "",
       element: <Intro />,
     },
+    {
+      path: "instrucciones",
+      element: <Instructions />,
+    },
   ],
 };
-

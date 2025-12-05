@@ -13,7 +13,7 @@ export default function Intro() {
 
       <VideoPlayerCard
         src={introVideo}
-        nextRoute="/modulos/deudas-sanas"
+        nextRoute="/modulos/deudas-sanas/instrucciones"
         showControls={true}
       />
     </div>
