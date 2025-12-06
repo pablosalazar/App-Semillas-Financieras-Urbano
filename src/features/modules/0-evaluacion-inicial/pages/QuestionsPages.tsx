@@ -3,10 +3,15 @@ import { QuizQuestion } from "../components/QuizQuestion";
 import { EVALUATION_INITIAL_QUESTIONS } from "../constants/questions";
 import { ProgressBar } from "@/shared/components/ProgressBar";
 import { ModulePageLayout } from "@/shared/components/ModulePageLayout";
-import { Link } from "react-router";
 import { ChevronRight } from "lucide-react";
+import { useAuthenticatedUser } from "@/context/AuthContext";
+import { useRegisterProgress } from "../../hooks/useRegisterProgress";
+import { Loader } from "@/shared/components/ui/loader/Loader";
 
 export default function QuestionsPages() {
+  const user = useAuthenticatedUser();
+  const { mutate: registerProgress, isPending } = useRegisterProgress();
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<
     Record<string, { selected: string; isCorrect: boolean }>
@@ -44,10 +49,36 @@ export default function QuestionsPages() {
   };
 
   const score = calculateScore();
-  const allQuestionsAnswered = Object.keys(answers).length === totalQuestions;
+
+  const handleForward = () => {
+    registerProgress(
+      {
+        userId: user.id,
+        moduleProgress: {
+          moduleId: "0-evaluacion-inicial",
+          isComplete: true,
+          progress: 100,
+          data: {
+            score: score.percentage,
+            correctAnswers: score.correct,
+            totalQuestions: score.total,
+          },
+        },
+      },
+      {
+        onSuccess: () => {
+          console.log("Progreso guardado exitosamente");
+        },
+        onError: (error) => {
+          console.error("Error al guardar progreso:", error);
+        },
+      }
+    );
+  };
 
   return (
     <ModulePageLayout title="Evaluación Inicial">
+      {isPending && <Loader message="Guardando progreso..." />}
       {!showResults && (
         <>
           {/* Progress Bar */}
@@ -77,7 +108,7 @@ export default function QuestionsPages() {
       )}
 
       {/* Score Summary (shown when showing results) */}
-      {showResults && allQuestionsAnswered && (
+      {showResults && (
         <div className="max-w-3xl mx-auto w-full flex-1 flex items-center justify-center -mt-50">
           <div className="bg-linear-to-r from-blue-500 to-blue-600 rounded-3xl shadow-xl p-12 text-white text-center">
             <h3 className="text-4xl font-bold mb-6">
@@ -99,9 +130,9 @@ export default function QuestionsPages() {
                 con nosotros para mejorar su conocimiento.
               </p>
             )}
-            <Link to={"/"} className="btn btn-orange">
+            <button className="btn btn-orange" onClick={handleForward}>
               Avanzar <ChevronRight />
-            </Link>
+            </button>
           </div>
         </div>
       )}

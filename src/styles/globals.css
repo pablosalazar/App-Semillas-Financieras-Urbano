@@ -10,18 +10,13 @@
 }
 
 .bg-default {
-  background-image: url("@/assets/images/backgrounds/bg-default.jpg");
+  background-image: url("@/assets/images/backgrounds/bg-default.png");
   background-size: cover;
 }
 
 .bg-home {
-  background-image: url("@/assets/images/backgrounds/bg-home.jpg");
+  background-image: url("@/assets/images/backgrounds/bg-home.png");
   background-size: cover;
-}
-
-.bg-with-logo {
-  background-image: url("@/assets/images/backgrounds/bg-with-logo.jpg");
-  background-position: left bottom;
 }
 
 .card-withe-transparent {
