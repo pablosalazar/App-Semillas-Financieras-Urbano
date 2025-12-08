@@ -82,7 +82,7 @@ export default function Questions() {
 
         <div className="max-w-3xl mx-auto w-full flex-1">
           <div
-            className={`bg-white rounded-3xl shadow-xl p-8 border-3 border-(--blue) transition-opacity duration-300 ${
+            className={`module-card ${
               isAnimating ? "opacity-0" : "opacity-100"
             }`}
           >
