@@ -27,6 +27,8 @@ export interface ModuleProgressData {
   correctAnswers?: number;
   totalQuestions?: number;
   attempts?: number;
+  answers?: Record<number, number>;
+  totalScore?: number;
 }
 
 export interface ModuleProgress {

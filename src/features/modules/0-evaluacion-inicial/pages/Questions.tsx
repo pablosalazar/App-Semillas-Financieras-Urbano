@@ -7,8 +7,10 @@ import { ChevronRight } from "lucide-react";
 import { useAuthenticatedUser } from "@/context/AuthContext";
 import { useRegisterProgress } from "../../hooks/useRegisterProgress";
 import { Loader } from "@/shared/components/ui/loader/Loader";
+import { useNavigate } from "react-router";
 
-export default function QuestionsPages() {
+export default function Questions() {
+  const navigate = useNavigate();
   const user = useAuthenticatedUser();
   const { mutate: registerProgress, isPending } = useRegisterProgress();
 
@@ -67,7 +69,7 @@ export default function QuestionsPages() {
       },
       {
         onSuccess: () => {
-          console.log("Progreso guardado exitosamente");
+          navigate("/");
         },
         onError: (error) => {
           console.error("Error al guardar progreso:", error);

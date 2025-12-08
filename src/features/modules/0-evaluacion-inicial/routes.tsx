@@ -2,7 +2,7 @@ import type { ModuleRoutes } from "../types";
 import { lazy } from "react";
 
 const Intro = lazy(() => import("./pages/Intro"));
-const QuestionsPages = lazy(() => import("./pages/QuestionsPages"));
+const Questions = lazy(() => import("./pages/Questions"));
 
 export const evaluacionInicialRoutes: ModuleRoutes = {
   basePath: "evaluacion-inicial",
@@ -13,7 +13,7 @@ export const evaluacionInicialRoutes: ModuleRoutes = {
     },
     {
       path: "preguntas",
-      element: <QuestionsPages />,
+      element: <Questions />,
     },
   ],
 };
