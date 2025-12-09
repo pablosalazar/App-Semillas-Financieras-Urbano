@@ -53,6 +53,7 @@ const Stage = ({ assets }: StageProps) => {
   const [lost, setLost] = useState(false);
   const navigate = useNavigate();
   const audioStartedRef = useRef(false);
+  const audioUnlockedRef = useRef(false);
 
   const { images, audios } = assets;
   let scrollOffset = 0;
@@ -79,6 +80,62 @@ const Stage = ({ assets }: StageProps) => {
   const player = new Player({ image: images[2] });
 
   const board = new Board({ score, images });
+
+  // Helper function to safely play audio on tablets
+  const playSound = async (audio: HTMLAudioElement) => {
+    try {
+      // Ensure audio is loaded before playing
+      if (audio.readyState < 2) {
+        // Audio not ready, try to load it
+        audio.load();
+        // Wait a bit for it to load
+        await new Promise((resolve) => {
+          const onCanPlay = () => {
+            audio.removeEventListener("canplay", onCanPlay);
+            resolve(undefined);
+          };
+          audio.addEventListener("canplay", onCanPlay);
+          // Timeout after 1 second to prevent hanging
+          setTimeout(() => {
+            audio.removeEventListener("canplay", onCanPlay);
+            resolve(undefined);
+          }, 1000);
+        });
+      }
+
+      // Reset audio to start
+      audio.currentTime = 0;
+
+      // Create a promise-based play to handle autoplay restrictions
+      const playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        await playPromise;
+      }
+    } catch (error) {
+      // Silently handle autoplay restrictions on tablets
+      console.warn("Audio playback prevented:", error);
+    }
+  };
+
+  // Unlock audio context on first user interaction (required for tablets)
+  const unlockAudio = async () => {
+    if (!audioUnlockedRef.current) {
+      try {
+        // Play and immediately pause all audio to unlock them
+        for (const audio of audios) {
+          audio.muted = true;
+          await audio.play();
+          audio.pause();
+          audio.muted = false;
+          audio.currentTime = 0;
+        }
+        audioUnlockedRef.current = true;
+      } catch (error) {
+        console.warn("Audio unlock failed:", error);
+      }
+    }
+  };
 
   const resetGame = () => {
     score = {
@@ -185,15 +242,15 @@ const Stage = ({ assets }: StageProps) => {
           if (item.recolected === false) {
             if (item.type === "gastos") {
               score.gastos++;
-              audios[1].currentTime = 0;
-              audios[1].play();
+              // Use playSound helper for better tablet compatibility
+              playSound(audios[1]);
             } else if (item.type === "gustos") {
               score.gustos++;
               if (score.gastos < 15) {
                 score.vidas--;
               }
-              audios[2].currentTime = 0;
-              audios[2].play();
+              // Use playSound helper for better tablet compatibility
+              playSound(audios[2]);
             }
           }
 
@@ -224,24 +281,41 @@ const Stage = ({ assets }: StageProps) => {
     if (play && !audioStartedRef.current) {
       const gameAudio = audios[0];
       gameAudio.volume = 0.5;
-      gameAudio.loop = true; // OGG format works well with native loop
+      gameAudio.loop = true;
 
       const playAudio = async () => {
         try {
+          // Wait for audio to be fully buffered to prevent loop issues
+          if (gameAudio.readyState < 3) {
+            // Wait for HAVE_FUTURE_DATA (readyState 3) or HAVE_ENOUGH_DATA (readyState 4)
+            await new Promise((resolve) => {
+              const onCanPlayThrough = () => {
+                gameAudio.removeEventListener(
+                  "canplaythrough",
+                  onCanPlayThrough
+                );
+                resolve(undefined);
+              };
+              gameAudio.addEventListener("canplaythrough", onCanPlayThrough);
+              // Fallback timeout
+              setTimeout(() => {
+                gameAudio.removeEventListener(
+                  "canplaythrough",
+                  onCanPlayThrough
+                );
+                resolve(undefined);
+              }, 2000);
+            });
+          }
           await gameAudio.play();
         } catch (error) {
           console.error("Error playing game audio:", error);
         }
       };
 
-      if (gameAudio.readyState >= 2) {
-        playAudio();
-      } else {
-        gameAudio.addEventListener("canplaythrough", playAudio, {
-          once: true,
-        });
-        gameAudio.load();
-      }
+      // Always load the audio first to ensure it's ready
+      gameAudio.load();
+      playAudio();
 
       audioStartedRef.current = true;
     } else if (!play && audioStartedRef.current) {
@@ -275,7 +349,9 @@ const Stage = ({ assets }: StageProps) => {
           {!lost ? (
             <button
               className="btn btn-orange"
-              onClick={() => {
+              onClick={async () => {
+                // Unlock audio on first user interaction
+                await unlockAudio();
                 setPlay(true);
                 commands.play = true;
               }}
@@ -291,7 +367,9 @@ const Stage = ({ assets }: StageProps) => {
               <div className="flex gap-4 justify-center">
                 <button
                   className="btn btn-blue flex items-center gap-2"
-                  onClick={() => {
+                  onClick={async () => {
+                    // Unlock audio on user interaction
+                    await unlockAudio();
                     commands.play = true;
                     resetGame();
                     setPlay(true);

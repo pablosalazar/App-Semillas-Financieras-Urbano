@@ -25,7 +25,7 @@ import corazonVacioImg from "./assets/images/controls/corazon_1.png";
 import corazonLlenoImg from "./assets/images/controls/corazon_0.png";
 
 // Audio
-import successAudio from "./assets/sounds/success.ogg";
+import successAudio from "./assets/sounds/success.mp3";
 import gameAudio from "./assets/sounds/game.ogg";
 import failAudio from "./assets/sounds/fail.mp3";
 
@@ -61,18 +61,27 @@ const GastosGame = () => {
       createImage(corazonLlenoImg),
     ];
 
-    // Create audio instances with proper settings
+    // Create audio instances with proper settings for tablet compatibility
     const gameAudioInstance = new Audio(gameAudio);
     gameAudioInstance.preload = "auto";
     gameAudioInstance.loop = true;
+    gameAudioInstance.volume = 0.5;
 
     const successAudioInstance = new Audio(successAudio);
     successAudioInstance.preload = "auto";
+    successAudioInstance.volume = 1.0;
 
     const failAudioInstance = new Audio(failAudio);
     failAudioInstance.preload = "auto";
+    failAudioInstance.volume = 1.0;
 
     const audios = [gameAudioInstance, successAudioInstance, failAudioInstance];
+
+    // Start loading audio files in the background (non-blocking)
+    // They will be ready when the user clicks to start the game
+    audios.forEach((audio) => {
+      audio.load();
+    });
 
     const images = await Promise.all(imagesPromises);
     setAssets({ images, audios });
