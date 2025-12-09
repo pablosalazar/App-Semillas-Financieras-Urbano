@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import arrowForwardImg from "@/assets/images/controls/arrow-forward.png";
 import replayImg from "@/assets/images/controls/replay.png";
+import { ProgressLoader } from "@/shared/components/ProgressLoader";
 
 interface VideoPlayerCardProps {
   src: string;
@@ -18,6 +19,7 @@ export function VideoPlayerCard({
 }: VideoPlayerCardProps) {
   const navigate = useNavigate();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleReplay = () => {
     if (videoRef.current) {
@@ -36,13 +38,20 @@ export function VideoPlayerCard({
     }
   };
 
+  const handleLoadedData = () => {
+    setIsLoading(false);
+  };
+
   return (
     <>
       {/* Video Card - Centered */}
       <div className="flex justify-center items-center min-h-[60vh] px-4 py-8">
         <div className="bg-white/30 rounded-3xl shadow-2xl max-w-4xl w-full p-6 border border-gray-400">
           {/* Video Container with rounded corners */}
-          <div className="rounded-2xl overflow-hidden shadow-md bg-black">
+          <div className="rounded-2xl overflow-hidden shadow-md bg-black relative">
+            {/* Loader - Show while video is loading */}
+            {isLoading && <ProgressLoader />}
+
             <video
               ref={videoRef}
               src={src}
@@ -50,6 +59,7 @@ export function VideoPlayerCard({
               className="w-full h-auto"
               autoPlay
               onEnded={handleVideoEnd}
+              onLoadedData={handleLoadedData}
             >
               Your browser does not support the video tag.
             </video>

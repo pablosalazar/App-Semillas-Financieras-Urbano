@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { createImage } from "@/shared/utils/createImage";
 import Stage from "./Stage";
-import { Loader } from "@/shared/components/ui/loader/Loader";
+import { ProgressLoader } from "@/shared/components/ProgressLoader";
 
 import backgroundImg from "./assets/images/background.png";
 import skyImg from "./assets/images/sky.png";
@@ -91,7 +91,7 @@ const GastosGame = () => {
     loadAssets();
   }, []);
 
-  return <>{!assets ? <Loader /> : <Stage assets={assets} />}</>;
+  return <>{!assets ? <ProgressLoader /> : <Stage assets={assets} />}</>;
 };
 
 export default GastosGame;

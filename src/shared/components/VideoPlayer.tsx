@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import arrowForwardImg from "@/assets/images/controls/arrow-forward.png";
 import replayImg from "@/assets/images/controls/replay.png";
+import { ProgressLoader } from "@/shared/components/ProgressLoader";
 
 interface VideoPlayerProps {
   src: string;
@@ -18,6 +19,7 @@ export function VideoPlayer({
 }: VideoPlayerProps) {
   const navigate = useNavigate();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleReplay = () => {
     if (videoRef.current) {
@@ -36,8 +38,15 @@ export function VideoPlayer({
     }
   };
 
+  const handleLoadedData = () => {
+    setIsLoading(false);
+  };
+
   return (
     <div className="fixed inset-0 w-screen h-screen flex items-center justify-center z-50 bg-linear-to-br from-slate-900 via-blue-900 to-slate-800">
+      {/* Loader - Show while video is loading */}
+      {isLoading && <ProgressLoader />}
+
       {/* Video Element */}
       <video
         ref={videoRef}
@@ -46,6 +55,7 @@ export function VideoPlayer({
         className="w-full h-full object-contain"
         autoPlay
         onEnded={handleVideoEnd}
+        onLoadedData={handleLoadedData}
       >
         Your browser does not support the video tag.
       </video>
