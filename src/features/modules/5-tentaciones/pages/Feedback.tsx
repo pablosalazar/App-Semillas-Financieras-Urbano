@@ -1,3 +1,48 @@
+import { ModulePageLayout } from "@/shared/components/ModulePageLayout";
+import { TENTACIONES_PATHS } from "./constants/paths";
+import { useNavigate } from "react-router";
+
 export default function Feedback() {
-  return <div>Feedback</div>;
+  const navigate = useNavigate();
+
+  return (
+    <ModulePageLayout title="Tentaciones">
+      <div className="space-y-6 mt-10">
+        <div className="max-w-3xl mx-auto w-full flex-1">
+          <div className="module-card">
+            <div className="space-y-6">
+              {/* Title with Emoji */}
+              <div className="flex flex-col items-center gap-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-5xl">🎉</span>
+                </div>
+                <h1 className="text-3xl font-bold text-(--blue) text-center">
+                  ¡Felicitaciones!
+                </h1>
+              </div>
+
+              {/* Message */}
+              <div className="space-y-4">
+                <div className="text-center space-y-4">
+                  <p className="text-lg leading-relaxed text-gray-700 max-w-2xl mx-auto">
+                    ¡Logro alcanzado! Has aprendido a diferenciar entre las
+                    tentaciones y las necesidades.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex justify-center pt-6">
+                <button
+                  onClick={() => navigate(TENTACIONES_PATHS.REWARD)}
+                  className="btn btn-orange text-xl px-8 py-3"
+                >
+                  Continuar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ModulePageLayout>
+  );
 }
