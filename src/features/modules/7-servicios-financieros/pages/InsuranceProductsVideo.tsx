@@ -1,14 +1,14 @@
 import { VideoPlayerCard } from "@/shared/components/VideoPlayerCard";
 import { ModulePageLayout } from "@/shared/components/ModulePageLayout";
-import introVideo from "../assets/videos/intro.mp4";
+import insuranceProductsVideo from "../assets/videos/productos-de-seguro.mp4";
 import { SERVICIOS_FINANCIEROS_PATHS } from "../constants/paths";
 
-export default function Intro() {
+export default function InsuranceProductsVideo() {
   return (
     <ModulePageLayout title="Servicios Financieros">
       <VideoPlayerCard
-        src={introVideo}
-        nextRoute={SERVICIOS_FINANCIEROS_PATHS.PRODUCTS_SAVING}
+        src={insuranceProductsVideo}
+        nextRoute={SERVICIOS_FINANCIEROS_PATHS.FINANCIAL_CHANNELS}
         showControls={true}
       />
     </ModulePageLayout>
