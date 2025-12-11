@@ -43,8 +43,8 @@ export default function Feedback() {
 
               {/* Message */}
               <div className="space-y-4">
-                <div className="text-center space-y-4">
-                  <p className="text-lg leading-relaxed text-gray-700 max-w-2xl mx-auto">
+                <div className="text-center space-y-4 text-(--blue)">
+                  <p className="text-lg leading-relaxed max-w-2xl mx-auto">
                     Logro alcanzado, usted aprendió la importancia del ahorro.
                   </p>
                 </div>

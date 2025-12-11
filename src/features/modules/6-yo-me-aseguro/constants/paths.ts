@@ -8,4 +8,3 @@ export const YO_ME_ASEGURO_PATHS = {
   FEEDBACK: `${BASE_PATH}/feedback`,
   REWARD: `${BASE_PATH}/reward`,
 };
-

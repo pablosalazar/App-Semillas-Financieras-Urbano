@@ -43,15 +43,15 @@ export default function Feedback() {
 
               {/* Message */}
               <div className="space-y-4">
-                <div className="text-center space-y-4">
-                  <p className="text-lg leading-relaxed text-gray-700 max-w-2xl mx-auto">
+                <div className="text-center space-y-4 text-(--blue)">
+                  <p className="text-lg leading-relaxed max-w-2xl mx-auto">
                     Recuerde registrar sus ingresos y gastos mensuales para
                     tomar mejores decisiones financieras.
                   </p>
-                  <p className="text-lg leading-relaxed text-gray-700 max-w-2xl mx-auto">
+                  <p className="text-lg leading-relaxed max-w-2xl mx-auto">
                     ¡Esto le ayudará a cumplir su meta de ahorro!
                   </p>
-                  <p className="text-lg leading-relaxed text-gray-700 max-w-2xl mx-auto">
+                  <p className="text-lg leading-relaxed max-w-2xl mx-auto">
                     ¡Continuemos aprendiendo con el siguiente módulo para que
                     mejore el manejo de sus finanzas!
                   </p>
